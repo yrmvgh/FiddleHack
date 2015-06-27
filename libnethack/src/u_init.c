@@ -19,6 +19,7 @@ static void role_ini_inv(const struct trobj *, short nocreate[4]);
 static void race_ini_inv(const struct trobj *, short nocreate[4]);
 static void knows_object(int);
 static void knows_class(char);
+static void augment_skill_cap(int skill, int augment, int minimum, int maximum);
 static boolean restricted_spell_discipline(int);
 
 #define UNDEF_TYP       0
@@ -241,9 +242,10 @@ static const struct trobj Booze[] = {
 };
 /* Gnomes start with an assortment of tools */
 static const struct trobj Bits_bobs[] = {
+    {AKLYS, 0, WEAPON_CLASS, 1, UNDEF_BLESS},
     {POT_OIL, 0, POTION_CLASS, 1, 0},
     {LEASH, 0, TOOL_CLASS, 1, 0},
-    {FORTUNE_COOKIE, 0, FOOD_CLASS, 1, 0},
+    {CARROT, 0, FOOD_CLASS, 1, 0},
     {TALLOW_CANDLE, 0, TOOL_CLASS, 1, 0},
     {WAX_CANDLE, 0, TOOL_CLASS, 1, 0},
     {0, 0, 0, 0, 0}
@@ -601,21 +603,33 @@ u_init(microseconds birthday)
     for (i = 0; i <= MAXSPELL; i++)
         spl_book[i].sp_id = NO_SPELL;
     update_supernatural_abilities();
-    
+
     u.ublesscnt = 300;  /* no prayers just yet */
     u.ualignbase[A_CURRENT] = u.ualignbase[A_ORIGINAL] = u.ualign.type =
         aligns[u.initalign].value;
     u.ulycn = NON_PM;
-    
+
     u.ubirthday = birthday;
-    
+
     /* For now, everyone starts out with a night vision range of 1. */
     u.nv_range = 1;
     u.next_attr_check = 600;    /* arbitrary initial setting */
-    
     u.delayed_killers.genocide = u.delayed_killers.illness =
         u.delayed_killers.stoning = u.delayed_killers.sliming =
         u.delayed_killers.zombie = NULL;
+}
+
+/* Raise the player character's skill cap for a particular skill. */
+void
+augment_skill_cap(int skill, int augment, int minimum, int maximum)
+{
+    int count = 0;
+    if (P_SKILL(skill) == P_ISRESTRICTED)
+        P_SKILL(skill) = P_BASIC;
+    while (count++ < augment && P_MAX_SKILL(skill) < maximum)
+        P_MAX_SKILL(skill) = P_MAX_SKILL(skill) + 1;
+    if (P_MAX_SKILL(skill) < minimum)
+        P_MAX_SKILL(skill) = minimum;
 }
 
 
@@ -782,6 +796,7 @@ u_init_inv_skills(void)
         knows_object(ELVEN_SHIELD);
         knows_object(ELVEN_BOOTS);
         knows_object(ELVEN_CLOAK);
+        augment_skill_cap(P_BOW, 1, P_BASIC, P_SKILLED);
         break;
     }
     case PM_DWARF:
@@ -796,6 +811,7 @@ u_init_inv_skills(void)
         knows_object(DWARVISH_MITHRIL_COAT);
         knows_object(DWARVISH_CLOAK);
         knows_object(DWARVISH_ROUNDSHIELD);
+        augment_skill_cap(P_PICK_AXE, 1, P_SKILLED, P_EXPERT);
         break;
 
     case PM_GNOME:
@@ -805,6 +821,9 @@ u_init_inv_skills(void)
         /*and they live in search of diamonds*/
         knows_object(TOUCHSTONE);
         knows_object(DIAMOND);
+
+        augment_skill_cap(P_CROSSBOW, 2, P_SKILLED, P_EXPERT);
+        augment_skill_cap(P_CLUB, 1, P_SKILLED, P_MASTER);
         break;
 
     case PM_ORC:
@@ -823,6 +842,7 @@ u_init_inv_skills(void)
         knows_object(ORCISH_SHIELD);
         knows_object(URUK_HAI_SHIELD);
         knows_object(ORCISH_CLOAK);
+        augment_skill_cap(P_SCIMITAR, 2, P_SKILLED, P_MASTER);
         break;
 
     default:   /* impossible */
