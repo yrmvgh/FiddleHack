@@ -1,5 +1,5 @@
 /* vim:set cin ft=c sw=4 sts=4 ts=8 et ai cino=Ls\:0t0(0 : -*- mode:c;fill-column:80;tab-width:8;c-basic-offset:4;indent-tabs-mode:nil;c-file-style:"k&r" -*-*/
-/* Last modified by Fredrik Ljungdahl, 2017-10-16 */
+/* Last modified by Yer mivvaggah, 2017-11-13 */
 /* Copyright (c) NetHack Development Team 1992.                   */
 /* NetHack may be freely redistributed.  See license for details. */
 
@@ -82,7 +82,7 @@ const struct nh_symdef warnsyms[WARNCOUNT] = {
 /* Note: these descriptions are used to name tiles, so should not be changed
    without a good reason. If two descriptions are the same, they must be
    consecutive in the list; and the list itself must be in the same order as
-   the S_ symbols in rm.h. */
+   the S_foo dungeon_symbols in rm.h. */
 const char *const defexplain[] = {
      /* 0 */ "unexplored area",     /* unexplored */
              "solid rock",          /* stone */
@@ -129,8 +129,9 @@ const char *const defexplain[] = {
              "opulent throne",      /* throne */
              "sink",                /* sink */
              "fountain",            /* fountain */
-             "lowered drawbridge",  /* vodbridge */
-    /* 40 */ "lowered drawbridge",  /* hodbridge */
+             "magic chest",         /* magic chest */
+    /* 40 */ "lowered drawbridge",  /* vodbridge */
+             "lowered drawbridge",  /* hodbridge */
              "raised drawbridge",   /* vcdbridge */
              "raised drawbridge",   /* hcdbridge */
 };
@@ -166,16 +167,16 @@ const char *const trapexplain[] = {
  *  Default screen symbols with explanations and colors.
  */
 const struct nh_symdef defsyms[] = {
-/* 0*/ {' ', "unexplored", CLR_GRAY},
-    {' ', "stone", CLR_GRAY},
-    {'|', "vwall", CLR_GRAY},
-    {'-', "hwall", CLR_GRAY},
-    {'-', "tlcorn", CLR_GRAY},
-    {'-', "trcorn", CLR_GRAY},
-    {'-', "blcorn", CLR_GRAY},
-    {'-', "brcorn", CLR_GRAY},
-    {'-', "crwall", CLR_GRAY},
-    {'-', "tuwall", CLR_GRAY},
+       {' ', "unexplored", CLR_GRAY}, /* 0 */
+       {' ', "stone", CLR_GRAY},
+       {'|', "vwall", CLR_GRAY},
+       {'-', "hwall", CLR_GRAY},
+       {'-', "tlcorn", CLR_GRAY},
+       {'-', "trcorn", CLR_GRAY},
+       {'-', "blcorn", CLR_GRAY},
+       {'-', "brcorn", CLR_GRAY},
+       {'-', "crwall", CLR_GRAY},
+       {'-', "tuwall", CLR_GRAY},
 /*10*/ {'-', "tdwall", CLR_GRAY},
     {'|', "tlwall", CLR_GRAY},
     {'|', "trwall", CLR_GRAY},
@@ -188,7 +189,6 @@ const struct nh_symdef defsyms[] = {
     {'.', "ice", CLR_CYAN},
     {'}', "lava", CLR_RED},
     {'.', "ndoor", CLR_GRAY},
-
     {'-', "vodoor", CLR_BROWN},
     {'|', "hodoor", CLR_BROWN},
     {'+', "vcdoor", CLR_BROWN},
@@ -202,16 +202,12 @@ const struct nh_symdef defsyms[] = {
     {'<', "upsstair", CLR_YELLOW | HI_ULINE},
     {'>', "dnsstair", CLR_YELLOW | HI_ULINE},
     {'_', "altar", CLR_GRAY},
-    {'_', "laltar", CLR_WHITE},
-    {'_', "naltar", CLR_GRAY},
-    {'_', "caltar", CLR_BLACK},
-    {'_', "ualtar", CLR_RED},
-    {'_', "aaltar", CLR_YELLOW},
     {'|', "grave", CLR_BLACK},
     {'\\', "throne", HI_GOLD},
     {'#', "sink", CLR_GRAY},
-/*40*/ {'{', "fountain", CLR_BRIGHT_BLUE},
-    {'#', "vodbridge", CLR_BROWN},
+       {'{', "fountain", CLR_BRIGHT_BLUE},
+       {'(', "magic chest", CLR_BRIGHT_MAGENTA},
+/*40*/ {'#', "vodbridge", CLR_BROWN},
     {'#', "hodbridge", CLR_BROWN},
     {'+', "vcdbridge", CLR_YELLOW},
     {'+', "hcdbridge", CLR_YELLOW}

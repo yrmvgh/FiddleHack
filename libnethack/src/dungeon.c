@@ -1,5 +1,5 @@
 /* vim:set cin ft=c sw=4 sts=4 ts=8 et ai cino=Ls\:0t0(0 : -*- mode:c;fill-column:80;tab-width:8;c-basic-offset:4;indent-tabs-mode:nil;c-file-style:"k&r" -*-*/
-/* Last modified by Fredrik Ljungdahl, 2017-10-29 */
+/* Last modified by Yer mivvaggah, 2017-11-13 */
 /* Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985. */
 /* NetHack may be freely redistributed.  See license for details. */
 
@@ -1833,8 +1833,9 @@ overview_is_interesting(const struct level *lev, const struct overview_info *oi)
         return TRUE;
 
     /* if overview_scan found _anything_ the level is also interesting */
-    if (oi->fountains || oi->sinks || oi->thrones || oi->trees || oi->temples ||
-        oi->altars || oi->shopcount || oi->branch || oi->portal || oi->vault)
+    if (oi->fountains || oi->magic_chests || oi->sinks || oi->thrones ||
+        oi->trees || oi->temples || oi->altars || oi->shopcount ||
+        oi->branch || oi->portal || oi->vault)
         return TRUE;
 
     /* "boring" describes this level very well */
@@ -1888,6 +1889,10 @@ overview_scan(const struct level *lev, struct overview_info *oi)
 
             case S_throne:
                 oi->thrones++;  /* don't care about throne rooms */
+                break;
+
+            case S_magic_chest:
+                oi->magic_chests++;
                 break;
 
             case S_altar:
@@ -2129,6 +2134,7 @@ overview_print_info(const struct overview_info *oi)
         buf = msgcat(buf, overview_print_gods(oi));
     }
 
+    ADDNTOBUF("magic chest", oi->magic_chests);
     ADDNTOBUF("fountain", oi->fountains);
     ADDNTOBUF("sink", oi->sinks);
     ADDNTOBUF("throne", oi->thrones);

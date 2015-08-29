@@ -1,5 +1,5 @@
 %{
-/* Last modified by Sean Hunt, 2014-10-17 */
+/* Last modified by Yer mivvaggah, 2017-11-13 */
 /*	Copyright (c) 1989 by Jean-Christophe Collet */
 /* NetHack may be freely redistributed.  See license for details. */
 
@@ -51,7 +51,7 @@ static int map_cnt = 0;
 		  map_cnt = 0;
 		  return MAP_ID;
 		}
-<MAPC>[-|}{+ABCISHKPLWTF\\#. 0123456789]*\r?\n	{
+<MAPC>[-|(}{+ABCISHKPLWTF\\#. 0123456789]*\r?\n	{
 		  int len = yyleng;
 		  /* convert \r\n to \n */
 		  if (len >= 2 && yytext[len - 2] == '\r') len -= 1;

@@ -1,5 +1,5 @@
 /* vim:set cin ft=c sw=4 sts=4 ts=8 et ai cino=Ls\:0t0(0 : -*- mode:c;fill-column:80;tab-width:8;c-basic-offset:4;indent-tabs-mode:nil;c-file-style:"k&r" -*-*/
-/* Last modified by Alex Smith, 2014-04-05 */
+/* Last modified by Yer mivvaggah, 2017-11-13 */
 /* Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985. */
 /* NetHack may be freely redistributed.  See license for details. */
 
@@ -93,7 +93,7 @@ typedef struct branch {
 
 /* dungeon overview information, generated and used by dooverview */
 struct overview_info {
-    char fountains, sinks, thrones, trees, temples;
+    char fountains, magic_chests, sinks, thrones, trees, temples;
     char altars;              /* number of non-high altars */
     char high_altars;         /* number of high altars */
     boolean lawful_altar;     /* lawful altar present */
