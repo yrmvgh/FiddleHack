@@ -653,7 +653,8 @@ peffects(struct monst *mon, struct obj *otmp, int *nothing, int *unkn)
                 adjattrib(A_WIS, 1, FALSE);
             }
             pline(you ? msgc_info : msgc_monneutral,
-                  "%s %s self-knowledgeable...", Mon, looks);
+                  "%s %s %s...", Mon, looks, otmp->blessed ? "self-knowledgable" :
+                  "truly enlightened");
             /* no real effect on monsters at the moment */
             if (you) {
                 win_pause_output(P_MESSAGE);
