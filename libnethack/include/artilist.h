@@ -228,7 +228,7 @@ static const struct artifact const_artilist[] = {
       NO_ATTK, NO_DFNS, CARY(AD_FIRE),
       ENERGY_BOOST, A_LAWFUL, PM_PRIEST, NON_PM, 2000L),
 
-    A("The Longbow of Diana", BOW,
+    A("The Longbow of Diana", ELVEN_BOW,
       (SPFX_NOGEN | SPFX_RESTR | SPFX_INTEL | SPFX_REFLECT), SPFX_ESP, 0,
       PHYS(5, 0), NO_DFNS, NO_CARY,
       CREATE_AMMO, A_CHAOTIC, PM_RANGER, NON_PM, 4000L),
