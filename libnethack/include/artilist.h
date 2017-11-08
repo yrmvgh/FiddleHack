@@ -1,5 +1,5 @@
 /* vim:set cin ft=c sw=4 sts=4 ts=8 et ai cino=Ls\:0t0(0 : -*- mode:c;fill-column:80;tab-width:8;c-basic-offset:4;indent-tabs-mode:nil;c-file-style:"k&r" -*-*/
-/* Last modified by Fredrik Ljungdahl, 2017-11-02 */
+/* Last modified by Yer mivvaggah, 2017-11-11 */
 /* Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985. */
 /* NetHack may be freely redistributed.  See license for details. */
 
@@ -197,10 +197,10 @@ static const struct artifact const_artilist[] = {
       INVIS, A_LAWFUL, PM_ARCHEOLOGIST, NON_PM, 2500L),
 
     A("The Heart of Ahriman", LUCKSTONE,
-      (SPFX_NOGEN | SPFX_RESTR | SPFX_INTEL), SPFX_STLTH, 0,
-      /* this stone does double damage if used as a projectile weapon */
-      PHYS(5, 0), NO_DFNS, NO_CARY,
-      LEVITATION, A_NEUTRAL, PM_BARBARIAN, NON_PM, 2500L),
+      (SPFX_NOGEN | SPFX_RESTR | SPFX_INTEL), (SPFX_DISPL|SPFX_EREGEN), 0,
+      /* this stone does 1d20 damage if used as a projectile weapon */
+      PHYS(5, 20), NO_DFNS, NO_CARY,
+      LEVITATION, A_CHAOTIC, PM_BARBARIAN, NON_PM, 2500L),
 
     A("The Sceptre of Might", MACE,
       (SPFX_NOGEN | SPFX_RESTR | SPFX_INTEL | SPFX_DALIGN), 0, 0,
