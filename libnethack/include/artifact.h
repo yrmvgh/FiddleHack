@@ -40,6 +40,7 @@
 # define SPFX_XRAY   0x2000000L /* gives X-RAY vision to player */
 # define SPFX_REFLECT 0x4000000L/* Reflection */
 # define SPFX_WTREDUC 0x8000000L/* Reduced weight (halved) */
+# define SPFX_DISPL  0x8100000L	/* DIsplacement */
 
 
 struct artifact {
