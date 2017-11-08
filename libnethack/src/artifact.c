@@ -573,6 +573,7 @@ spfx_provides_extrinsic(const struct obj *obj, unsigned long spfx,
         (spfx & SPFX_HPHDAM  && extrinsic == HALF_PHDAM) ||
         (spfx & SPFX_HALRES  && extrinsic == HALLUC_RES) ||
         (spfx & SPFX_REFLECT && extrinsic == REFLECTING) ||
+        (spfx & SPFX_DISPL   && extrinsic == DISPLACEMENT) ||
         (spfx & SPFX_XRAY    && extrinsic == XRAY_VISION))
         return TRUE;
 
