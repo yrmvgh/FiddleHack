@@ -1,5 +1,5 @@
 /* vim:set cin ft=c sw=4 sts=4 ts=8 et ai cino=Ls\:0t0(0 : -*- mode:c;fill-column:80;tab-width:8;c-basic-offset:4;indent-tabs-mode:nil;c-file-style:"k&r" -*-*/
-/* Last modified by Fredrik Ljungdahl, 2017-11-02 */
+/* Last modified by Yer mivvaggah, 2017-11-11 */
 /* Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985-1999. */
 /* NetHack may be freely redistributed.  See license for details. */
 
@@ -91,7 +91,7 @@ const struct Role roles[] = {
                                 {"Pioneer", 0}},
      "Anu", "_Ishtar", "Anshar",        /* Babylonian */
      "Cav", "the Caves of the Ancestors", "the Dragon's Lair",
-     PM_CAVEMAN, PM_LITTLE_DOG,
+     PM_CAVEMAN, PM_BAT,
      PM_SHAMAN_KARNOV, PM_NEANDERTHAL, PM_CHROMATIC_DRAGON,
      PM_BUGBEAR, PM_HILL_GIANT, S_HUMANOID, S_GIANT,
      ART_SCEPTRE_OF_MIGHT,
