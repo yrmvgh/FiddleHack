@@ -1663,7 +1663,8 @@ arti_invoke(struct obj *obj)
             break;
         case CREATE_AMMO:{
                 struct obj *otmp =
-                    mksobj(level, ARROW, TRUE, FALSE, rng_main);
+                    rn2(4) ? mksobj(level, ARROW, TRUE, FALSE, rng_main):
+                        mksobj(level, ELVEN_ARROW, TRUE, FALSE, rng_main);
 
                 if (!otmp)
                     goto nothing_special;
