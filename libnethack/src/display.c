@@ -1,5 +1,5 @@
 /* vim:set cin ft=c sw=4 sts=4 ts=8 et ai cino=Ls\:0t0(0 : -*- mode:c;fill-column:80;tab-width:8;c-basic-offset:4;indent-tabs-mode:nil;c-file-style:"k&r" -*-*/
-/* Last modified by Fredrik Ljungdahl, 2017-11-06 */
+/* Last modified by Yer mivvaggah, 2017-11-15 */
 /* Copyright (c) Dean Luick, with acknowledgements to Kevin Darcy */
 /* and Dave Cohrs, 1990.                                          */
 /* NetHack may be freely redistributed.  See license for details. */
@@ -1423,6 +1423,7 @@ obfuscate_object(int otyp)
 
         case WOODEN_HARP:
         case MAGIC_HARP:
+        case WOODEN_FIDDLE:
             otyp = WOODEN_HARP;
             break;
 
