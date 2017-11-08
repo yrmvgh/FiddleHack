@@ -3285,6 +3285,7 @@ doapply(const struct nh_cmd_arg *arg)
     case BUGLE:
     case LEATHER_DRUM:
     case DRUM_OF_EARTHQUAKE:
+    case WOODEN_FIDDLE:
         res = do_play_instrument(obj, arg);
         break;
     case HORN_OF_PLENTY:       /* not a musical instrument */

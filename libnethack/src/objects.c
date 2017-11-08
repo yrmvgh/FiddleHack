@@ -651,6 +651,7 @@ const struct objclass const_objects[] = {
     TOOL("leather drum", "drum", 0, 0, 0, 0, 4, 25, 25, LEATHER, HI_LEATHER),
     TOOL("drum of earthquake", "drum",
          0, 0, 1, 1, 2, 25, 25, LEATHER, HI_LEATHER),
+    TOOL("wooden fiddle", "fiddle", 0, 0, 0, 0, 4, 10, 30, WOOD, HI_WOOD),
 /* tools useful as weapons */
     WEPTOOL("pick-axe", NULL,
             1, 0, 0, 20, 100, 50, 6, 3, WHACK, P_PICK_AXE, IRON, HI_METAL),

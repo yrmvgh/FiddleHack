@@ -1423,6 +1423,7 @@ obfuscate_object(int otyp)
 
         case WOODEN_HARP:
         case MAGIC_HARP:
+        case WOODEN_FIDDLE:
             otyp = WOODEN_HARP;
             break;
 

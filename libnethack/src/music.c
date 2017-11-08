@@ -450,6 +450,7 @@ do_improvisation(struct obj *instr, const struct nh_cmd_arg *arg)
             exercise(A_DEX, TRUE);
             break;
         }       /* else FALLTHRU */
+    case WOODEN_FIDDLE:
     case WOODEN_HARP:  /* May calm Nymph */
         do_spec &= (rn2(ACURR(A_DEX)) + u.ulevel > 25);
         pline(do_spec ? msgc_actionok : msgc_failrandom,
