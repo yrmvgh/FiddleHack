@@ -235,6 +235,7 @@
    monsters, we'll likely have to add a new light range field to mons[] */
 # define emits_light(ptr)       (((ptr)->mlet == S_LIGHT || \
                                   (ptr) == &mons[PM_FIRE_ELEMENTAL] || \
+                                  (ptr) == &mons[PM_ARCHON] || \
                                   (ptr) == &mons[PM_FIRE_VORTEX]) ? 4 : \
                                  ((ptr)->mlet == S_EYE) ? 1 : 0)
 /*      [note: the light ranges above were reduced to 1 for performance...] */
