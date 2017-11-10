@@ -224,7 +224,6 @@ static const struct trobj Xtra_food[] = {
 };
 /* Dwarves. Booze. */
 static const struct trobj Bits_bobs[] = {
-    {
     {POT_BOOZE, 0, POTION_CLASS, 1, 0},
     {0, 0, 0, 0, 0}
 };
