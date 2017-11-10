@@ -227,7 +227,8 @@ static const struct trobj Bits_bobs[] = {
     {
     {POT_BOOZE, 0, POTION_CLASS, 1, 0},
     {0, 0, 0, 0, 0}
-};/* Gnomes start with an assortment of tools */
+};
+/* Gnomes start with an assortment of tools */
 static const struct trobj Bits_bobs[] = {
     {
     {POT_OIL, 0, POTION_CLASS, 1, 0},
