@@ -687,6 +687,8 @@ m_initinv(struct monst *mtmp, enum rng rng)
         } else if (ptr == &mons[PM_ASMODEUS]) {
             mongets(mtmp, WAN_COLD, rng);
             mongets(mtmp, WAN_FIRE, rng);
+        } else if (ptr == &mons[PM_INCUBUS] || &mons[PM_SUCCUBUS]) {
+            mongets(mtmp, PANCAKE, rng);
         }
         break;
     case S_GNOME:
