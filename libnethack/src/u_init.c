@@ -105,7 +105,7 @@ static const struct trobj Knight[] = {
 
 static const struct trobj Monk[] = {
 #define M_BOOK          2
-    {LEATHER_GLOVES, 2, ARMOR_CLASS, 1, UNDEF_BLESS},
+    {LEATHER_GLOVES, 2, ARMOR_CLASS, 1, 1},
     {ROBE, 1, ARMOR_CLASS, 1, UNDEF_BLESS},
     {UNDEF_TYP, UNDEF_SPE, SPBOOK_CLASS, 1, 1},
     {UNDEF_TYP, UNDEF_SPE, SCROLL_CLASS, 1, UNDEF_BLESS},
@@ -177,7 +177,6 @@ static const struct trobj Tourist[] = {
     {HAWAIIAN_SHIRT, 0, ARMOR_CLASS, 1, UNDEF_BLESS},
     {CREDIT_CARD, 0, TOOL_CLASS, 1, 0},
     {EXPENSIVE_CAMERA, UNDEF_SPE, TOOL_CLASS, 1, 0},
-    {LEASH, 0, TOOL_CLASS, 1, 0},
     {MAGIC_MARKER, 0, TOOL_CLASS, 1, 0},
     {TIN_OPENER, 0, TOOL_CLASS, 1, 0},
     {TOWEL, 0, TOOL_CLASS, 1, 0},
@@ -207,7 +206,19 @@ static const struct trobj Wizard[] = {
     {0, 0, 0, 0, 0}
 };
 
-/* Some get extra stuff */
+/* Even humans get something */
+static const struct trobj LawCanteen[] = {
+    {POT_WATER, 0, POTION_CLASS, 1, 1},
+    {0, 0, 0, 0, 0}
+};
+static const struct trobj WetCanteen[] = {
+    {POT_WATER, 0, POTION_CLASS, 1, 0},
+    {0, 0, 0, 0, 0}
+};
+static const struct trobj XomCanteen[] = {
+    {POT_WATER, 0, POTION_CLASS, 1, -1},
+    {0, 0, 0, 0, 0}
+};
 
 /* Elves get an instrument */
 static const struct trobj Instrument[] = {
@@ -215,12 +226,28 @@ static const struct trobj Instrument[] = {
     {0, 0, 0, 0, 0}
 };
 
-/* Orcs start with extra food to offset drawbacks */
+/* Orcs start with extra food and some poison */
 static const struct trobj Xtra_food[] = {
     {UNDEF_TYP, UNDEF_SPE, FOOD_CLASS, 2, 0},
+    {TRIPE_RATION, 0, FOOD_CLASS, 1, 0},
+    {MEATBALL, 0, FOOD_CLASS, 3, 0},
+    {POT_SICKNESS, 0, POTION_CLASS, 1, UNDEF_BLESS},
     {0, 0, 0, 0, 0}
 };
-
+/* Dwarves. Booze. */
+static const struct trobj Booze[] = {
+    {POT_BOOZE, 0, POTION_CLASS, 2, UNDEF_BLESS},
+    {0, 0, 0, 0, 0}
+};
+/* Gnomes start with an assortment of tools */
+static const struct trobj Bits_bobs[] = {
+    {POT_OIL, 0, POTION_CLASS, 1, 0},
+    {LEASH, 0, TOOL_CLASS, 1, 0},
+    {FORTUNE_COOKIE, 0, FOOD_CLASS, 1, 0},
+    {TALLOW_CANDLE, 0, TOOL_CLASS, 1, 0},
+    {WAX_CANDLE, 0, TOOL_CLASS, 1, 0},
+    {0, 0, 0, 0, 0}
+};
 /* Explorer mode */
 static const struct trobj Wishing[] = {
     {WAN_WISHING, 3, WAND_CLASS, 1, 0},
@@ -244,7 +271,7 @@ static const struct inv_sub {
     {PM_ELF, BOW, ELVEN_BOW},
     {PM_ELF, ARROW, ELVEN_ARROW},
     {PM_ELF, HELMET, ELVEN_LEATHER_HELM},
-    /* { PM_ELF, SMALL_SHIELD, ELVEN_SHIELD }, */
+    {PM_ELF, SMALL_SHIELD, ELVEN_SHIELD},
     {PM_ELF, CLOAK_OF_DISPLACEMENT, ELVEN_CLOAK},
     {PM_ELF, CRAM_RATION, LEMBAS_WAFER},
     {PM_ORC, DAGGER, ORCISH_DAGGER},
@@ -259,8 +286,8 @@ static const struct inv_sub {
     {PM_DWARF, SPEAR, DWARVISH_SPEAR},
     {PM_DWARF, SHORT_SWORD, DWARVISH_SHORT_SWORD},
     {PM_DWARF, HELMET, DWARVISH_IRON_HELM},
-    /* { PM_DWARF, SMALL_SHIELD, DWARVISH_ROUNDSHIELD }, */
-    /* { PM_DWARF, PICK_AXE, DWARVISH_MATTOCK }, */
+    {PM_DWARF, SMALL_SHIELD, DWARVISH_ROUNDSHIELD},
+    {PM_DWARF, PICK_AXE, DWARVISH_MATTOCK },
     {PM_GNOME, BOW, CROSSBOW},
     {PM_GNOME, ARROW, CROSSBOW_BOLT},
     {NON_PM, STRANGE_OBJECT, STRANGE_OBJECT}
@@ -715,7 +742,18 @@ u_init_inv_skills(void)
         /*** Race-specific initializations ***/
     switch (Race_switch) {
     case PM_HUMAN:
-        /* Nothing special */
+        /* Just some water */
+        switch (u.ualign.type) {
+        case A_LAWFUL:
+            ini_inv(LawCanteen, nclist, rng_main);
+            break;
+        case A_NEUTRAL:
+            ini_inv(WetCanteen, nclist, rng_main);
+            break;
+        case A_CHAOTIC:
+            ini_inv(XomCanteen, nclist, rng_main);
+            break;
+        }
         break;
 
     case PM_ELF:
@@ -724,9 +762,9 @@ u_init_inv_skills(void)
            Non-warriors get an instrument.  We use a kludge to get only
            non-magic instruments. */
         static const int trotyp[] = {
-            WOODEN_FLUTE, TOOLED_HORN, WOODEN_HARP, BELL, BUGLE, LEATHER_DRUM
+            WOODEN_FLUTE, TOOLED_HORN, WOODEN_HARP, BUGLE, WOODEN_FIDDLE
         };
-        if (Role_if(PM_PRIEST) || Role_if(PM_WIZARD)) {
+        {
             trobj_list = copy_trobj_list(Instrument);
             trobj_list[0].trotyp = trotyp[rn2(SIZE(trotyp))];
             ini_inv(trobj_list, nclist, rng_main);
@@ -747,6 +785,9 @@ u_init_inv_skills(void)
         break;
     }
     case PM_DWARF:
+        /* Booze. */
+        ini_inv(Booze, nclist, rng_main);
+
         /* Dwarves can recognize all dwarvish objects */
         knows_object(DWARVISH_SPEAR);
         knows_object(DWARVISH_SHORT_SWORD);
@@ -758,6 +799,12 @@ u_init_inv_skills(void)
         break;
 
     case PM_GNOME:
+        /*gnomes carry around misc gadgets*/
+        ini_inv(Bits_bobs, nclist, rng_main);
+
+        /*and they live in search of diamonds*/
+        knows_object(TOUCHSTONE);
+        knows_object(DIAMOND);
         break;
 
     case PM_ORC:
@@ -987,7 +1034,8 @@ ini_inv(const struct trobj *trop, short nocreate[4], enum rng rng)
             obj->dknown = obj->bknown = obj->rknown = 1;
             if (objects[otyp].oc_uses_known)
                 obj->known = 1;
-            obj->cursed = 0;
+            if (obj->otyp != POT_WATER)
+		obj->cursed = 0;
             obj->oprops = obj->oprops_known = 0;
             if (obj->opoisoned && u.ualign.type != A_CHAOTIC)
                 obj->opoisoned = 0;
@@ -1013,6 +1061,7 @@ ini_inv(const struct trobj *trop, short nocreate[4], enum rng rng)
 
         /* pre-ID oil as it's easy to check anyway */
         knows_object(POT_OIL);
+        knows_object(POT_WATER);
 
         if (obj->oclass == ARMOR_CLASS) {
             long mask;
