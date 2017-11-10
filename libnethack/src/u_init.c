@@ -229,7 +229,6 @@ static const struct trobj Booze[] = {
 };
 /* Gnomes start with an assortment of tools */
 static const struct trobj Bits_bobs[] = {
-    {
     {POT_OIL, 0, POTION_CLASS, 1, 0},
     {LEASH, 0, TOOL_CLASS, 1, 0},
     {FORTUNE_COOKIE, 0, FOOD_CLASS, 1, 0},
