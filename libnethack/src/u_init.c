@@ -1,5 +1,5 @@
 /* vim:set cin ft=c sw=4 sts=4 ts=8 et ai cino=Ls\:0t0(0 : -*- mode:c;fill-column:80;tab-width:8;c-basic-offset:4;indent-tabs-mode:nil;c-file-style:"k&r" -*-*/
-/* Last modified by Fredrik Ljungdahl, 2017-11-02 */
+/* Last modified by Yer mivvaggah, 2017-11-15 */
 /* Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985. */
 /* NetHack may be freely redistributed.  See license for details. */
 
@@ -218,9 +218,25 @@ static const struct trobj Instrument[] = {
 /* Orcs start with extra food to offset drawbacks */
 static const struct trobj Xtra_food[] = {
     {UNDEF_TYP, UNDEF_SPE, FOOD_CLASS, 2, 0},
+    {TRIPE_RATION, 0, FOOD_CLASS, 1, 0},
+    {MEATBALL, 0, FOOD_CLASS, 3, 0},
     {0, 0, 0, 0, 0}
 };
-
+/* Dwarves. Booze. */
+static const struct trobj Bits_bobs[] = {
+    {
+    {POT_BOOZE, 0, POTION_CLASS, 1, 0},
+    {0, 0, 0, 0, 0}
+};/* Gnomes start with an assortment of tools */
+static const struct trobj Bits_bobs[] = {
+    {
+    {POT_OIL, 0, POTION_CLASS, 1, 0},
+    {LEASH, 0, TOOL_CLASS, 1, 0},
+    {FORTUNE_COOKIE, 0, FOOD_CLASS, 1, 0},
+    {TALLOW_CANDLE, 0, TOOL_CLASS, 1, 0},
+    {WAX_CANDLE, 0, TOOL_CLASS, 1, 0},
+    {0, 0, 0, 0, 0}
+};
 /* Explorer mode */
 static const struct trobj Wishing[] = {
     {WAN_WISHING, 3, WAND_CLASS, 1, 0},
@@ -244,7 +260,7 @@ static const struct inv_sub {
     {PM_ELF, BOW, ELVEN_BOW},
     {PM_ELF, ARROW, ELVEN_ARROW},
     {PM_ELF, HELMET, ELVEN_LEATHER_HELM},
-    /* { PM_ELF, SMALL_SHIELD, ELVEN_SHIELD }, */
+    {PM_ELF, SMALL_SHIELD, ELVEN_SHIELD},
     {PM_ELF, CLOAK_OF_DISPLACEMENT, ELVEN_CLOAK},
     {PM_ELF, CRAM_RATION, LEMBAS_WAFER},
     {PM_ORC, DAGGER, ORCISH_DAGGER},
@@ -259,8 +275,8 @@ static const struct inv_sub {
     {PM_DWARF, SPEAR, DWARVISH_SPEAR},
     {PM_DWARF, SHORT_SWORD, DWARVISH_SHORT_SWORD},
     {PM_DWARF, HELMET, DWARVISH_IRON_HELM},
-    /* { PM_DWARF, SMALL_SHIELD, DWARVISH_ROUNDSHIELD }, */
-    /* { PM_DWARF, PICK_AXE, DWARVISH_MATTOCK }, */
+    {PM_DWARF, SMALL_SHIELD, DWARVISH_ROUNDSHIELD},
+    {PM_DWARF, PICK_AXE, DWARVISH_MATTOCK },
     {PM_GNOME, BOW, CROSSBOW},
     {PM_GNOME, ARROW, CROSSBOW_BOLT},
     {NON_PM, STRANGE_OBJECT, STRANGE_OBJECT}
@@ -747,6 +763,9 @@ u_init_inv_skills(void)
         break;
     }
     case PM_DWARF:
+        /* Booze. */
+        ini_inv(Booze, nclist, rng_main);
+
         /* Dwarves can recognize all dwarvish objects */
         knows_object(DWARVISH_SPEAR);
         knows_object(DWARVISH_SHORT_SWORD);
@@ -758,6 +777,12 @@ u_init_inv_skills(void)
         break;
 
     case PM_GNOME:
+        /*gnomes carry around misc gadgets*/
+        ini_inv(Bits_bobs, nclist, rng_main);
+
+        /*and they live in search of diamonds*/
+        knows_object(TOUCHSTONE);
+        knows_object(DIAMOND);
         break;
 
     case PM_ORC:
