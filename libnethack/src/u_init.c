@@ -207,20 +207,16 @@ static const struct trobj Wizard[] = {
 };
 
 /* Even humans get something */
-static const struct trobj Canteen[] = {
-    switch (u.ualign.type) {
-    case A_LAWFUL:
-        {POT_WATER, 0, POTION_CLASS, 1, 1},
-        break;
-    case A_NEUTRAL:
-        {POT_WATER, 0, POTION_CLASS, 1, 0},
-        break;
-    case A_CHAOTIC:
-        {POT_WATER, 0, POTION_CLASS, 1, -1},
-        break;
-    }
+static const struct trobj LawCanteen[] = {
+    {POT_WATER, 0, POTION_CLASS, 1, 1},
     {0, 0, 0, 0, 0}
 };
+static const struct trobj WetCanteen[] = {
+    {POT_WATER, 0, POTION_CLASS, 1, 0},
+    {0, 0, 0, 0, 0}
+static const struct trobj XomCanteen[] = {
+    {POT_WATER, 0, POTION_CLASS, 1, -1},
+    {0, 0, 0, 0, 0}
 
 /* Elves get an instrument */
 static const struct trobj Instrument[] = {
@@ -745,7 +741,17 @@ u_init_inv_skills(void)
     switch (Race_switch) {
     case PM_HUMAN:
         /* Just some water */
-        ini_inv(Canteen, nclist, rng_main);
+        switch (u.ualign.type) {
+        case A_LAWFUL:
+            ini_inv(LawCanteen, nclist, rng_main);
+            break;
+        case A_NEUTRAL:
+            ini_inv(WetCanteen, nclist, rng_main);
+            break;
+        case A_CHAOTIC:
+            ini_inv(XomCanteen, nclist, rng_main);
+            break;
+        }
         break;
 
     case PM_ELF:
