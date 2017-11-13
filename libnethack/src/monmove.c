@@ -1,5 +1,5 @@
 /* vim:set cin ft=c sw=4 sts=4 ts=8 et ai cino=Ls\:0t0(0 : -*- mode:c;fill-column:80;tab-width:8;c-basic-offset:4;indent-tabs-mode:nil;c-file-style:"k&r" -*-*/
-/* Last modified by Fredrik Ljungdahl, 2017-11-03 */
+/* Last modified by Yer mivvaggah, 2017-11-13 */
 /* Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985. */
 /* NetHack may be freely redistributed.  See license for details. */
 
@@ -141,6 +141,7 @@ regen_rate(const struct monst *mon, boolean energy)
 {
     int regen = 0;
     int role = monsndx(mon->data);
+    int boosty = 1;
     if (mon == &youmonst)
         role = Role_switch;
 
@@ -148,9 +149,9 @@ regen_rate(const struct monst *mon, boolean energy)
         regen += 100;
 
     if (role == (energy ? PM_WIZARD : PM_HEALER))
-        regen += 33;
+        boosty = 2;
 
-    regen += 3 * m_mlev(mon);
+    regen += 3 * m_mlev(mon) * boosty;
 
     int attrib = acurr(mon, energy ? A_WIS : A_CON);
 
