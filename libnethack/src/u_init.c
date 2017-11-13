@@ -1,5 +1,5 @@
 /* vim:set cin ft=c sw=4 sts=4 ts=8 et ai cino=Ls\:0t0(0 : -*- mode:c;fill-column:80;tab-width:8;c-basic-offset:4;indent-tabs-mode:nil;c-file-style:"k&r" -*-*/
-/* Last modified by Fredrik Ljungdahl, 2017-11-10 */
+/* Last modified by Yer mivvaggah, 2017-11-13 */
 /* Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985. */
 /* NetHack may be freely redistributed.  See license for details. */
 
@@ -105,7 +105,7 @@ static const struct trobj Knight[] = {
 
 static const struct trobj Monk[] = {
 #define M_BOOK          2
-    {LEATHER_GLOVES, 2, ARMOR_CLASS, 1, UNDEF_BLESS},
+    {LEATHER_GLOVES, 2, ARMOR_CLASS, 1, 1},
     {ROBE, 1, ARMOR_CLASS, 1, UNDEF_BLESS},
     {UNDEF_TYP, UNDEF_SPE, SPBOOK_CLASS, 1, 1},
     {UNDEF_TYP, UNDEF_SPE, SCROLL_CLASS, 1, UNDEF_BLESS},
@@ -177,7 +177,6 @@ static const struct trobj Tourist[] = {
     {HAWAIIAN_SHIRT, 0, ARMOR_CLASS, 1, UNDEF_BLESS},
     {CREDIT_CARD, 0, TOOL_CLASS, 1, 0},
     {EXPENSIVE_CAMERA, UNDEF_SPE, TOOL_CLASS, 1, 0},
-    {LEASH, 0, TOOL_CLASS, 1, 0},
     {MAGIC_MARKER, 0, TOOL_CLASS, 1, 0},
     {TIN_OPENER, 0, TOOL_CLASS, 1, 0},
     {TOWEL, 0, TOOL_CLASS, 1, 0},
@@ -207,7 +206,20 @@ static const struct trobj Wizard[] = {
     {0, 0, 0, 0, 0}
 };
 
-/* Some get extra stuff */
+/* Even humans get something */
+static const struct trobj Canteen[] = {
+    switch (u.ualign.type)
+        case A_LAWFUL:
+            {POT_WATER, 0, POTION_CLASS, 1, 1},
+            break;
+        case A_NEUTRAL:
+            {POT_WATER, 0, POTION_CLASS, 1, 0},
+            break;
+        case A_CHAOTIC:
+            {POT_WATER, 0, POTION_CLASS, 1, -1},
+            break;
+    {0, 0, 0, 0, 0}
+};
 
 /* Elves get an instrument */
 static const struct trobj Instrument[] = {
@@ -215,16 +227,17 @@ static const struct trobj Instrument[] = {
     {0, 0, 0, 0, 0}
 };
 
-/* Orcs start with extra food to offset drawbacks */
+/* Orcs start with extra food and some poison */
 static const struct trobj Xtra_food[] = {
     {UNDEF_TYP, UNDEF_SPE, FOOD_CLASS, 2, 0},
     {TRIPE_RATION, 0, FOOD_CLASS, 1, 0},
     {MEATBALL, 0, FOOD_CLASS, 3, 0},
+    {POT_SICKNESS, 0, POTION_CLASS, 1, UNDEF_BLESS},
     {0, 0, 0, 0, 0}
 };
 /* Dwarves. Booze. */
 static const struct trobj Booze[] = {
-    {POT_BOOZE, 0, POTION_CLASS, 1, 0},
+    {POT_BOOZE, 0, POTION_CLASS, 2, UNDEF_BLESS},
     {0, 0, 0, 0, 0}
 };
 /* Gnomes start with an assortment of tools */
@@ -730,7 +743,8 @@ u_init_inv_skills(void)
         /*** Race-specific initializations ***/
     switch (Race_switch) {
     case PM_HUMAN:
-        /* Nothing special */
+        /* Just some water */
+        ini_inv(Canteen, nclist, rng_main);
         break;
 
     case PM_ELF:
@@ -739,9 +753,9 @@ u_init_inv_skills(void)
            Non-warriors get an instrument.  We use a kludge to get only
            non-magic instruments. */
         static const int trotyp[] = {
-            WOODEN_FLUTE, TOOLED_HORN, WOODEN_HARP, BELL, BUGLE, LEATHER_DRUM
+            WOODEN_FLUTE, TOOLED_HORN, WOODEN_HARP, BUGLE, WOODEN_FIDDLE
         };
-        if (Role_if(PM_PRIEST) || Role_if(PM_WIZARD)) {
+        {
             trobj_list = copy_trobj_list(Instrument);
             trobj_list[0].trotyp = trotyp[rn2(SIZE(trotyp))];
             ini_inv(trobj_list, nclist, rng_main);
@@ -1011,7 +1025,8 @@ ini_inv(const struct trobj *trop, short nocreate[4], enum rng rng)
             obj->dknown = obj->bknown = obj->rknown = 1;
             if (objects[otyp].oc_uses_known)
                 obj->known = 1;
-            obj->cursed = 0;
+            if (obj->otype != POT_WATER)
+		obj->cursed = 0;
             obj->oprops = obj->oprops_known = 0;
             if (obj->opoisoned && u.ualign.type != A_CHAOTIC)
                 obj->opoisoned = 0;
@@ -1037,6 +1052,7 @@ ini_inv(const struct trobj *trop, short nocreate[4], enum rng rng)
 
         /* pre-ID oil as it's easy to check anyway */
         knows_object(POT_OIL);
+        knows_object(POT_WATER);
 
         if (obj->oclass == ARMOR_CLASS) {
             long mask;
