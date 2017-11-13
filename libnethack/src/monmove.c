@@ -141,6 +141,7 @@ regen_rate(const struct monst *mon, boolean energy)
 {
     int regen = 0;
     int role = monsndx(mon->data);
+    int boosty = 1;
     if (mon == &youmonst)
         role = Role_switch;
 
@@ -148,9 +149,9 @@ regen_rate(const struct monst *mon, boolean energy)
         regen += 100;
 
     if (role == (energy ? PM_WIZARD : PM_HEALER))
-        regen += 33;
+        boosty = 2;
 
-    regen += 3 * m_mlev(mon);
+    regen += 3 * m_mlev(mon) * boosty;
 
     int attrib = acurr(mon, energy ? A_WIS : A_CON);
 
