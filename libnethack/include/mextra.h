@@ -1,5 +1,9 @@
 /* vim:set cin ft=c sw=4 sts=4 ts=8 et ai cino=Ls\:0t0(0 : -*- mode:c;fill-column:80;tab-width:8;c-basic-offset:4;indent-tabs-mode:nil;c-file-style:"k&r" -*-*/
+<<<<<<< .merge_file_sqbHcN
 /* Last modified by Yer mivvaggah, 2017-11-11 */
+=======
+/* Last modified by Fredrik Ljungdahl, 2017-11-08 */
+>>>>>>> .merge_file_UV1khN
 /* Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985. */
 /* Copyright (c) Izchak Miller, 1989.                             */
 /* Copyright (c) Fredrik Ljungdahl, 2015.                         */
