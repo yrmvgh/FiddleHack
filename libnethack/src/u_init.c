@@ -214,9 +214,11 @@ static const struct trobj LawCanteen[] = {
 static const struct trobj WetCanteen[] = {
     {POT_WATER, 0, POTION_CLASS, 1, 0},
     {0, 0, 0, 0, 0}
+};
 static const struct trobj XomCanteen[] = {
     {POT_WATER, 0, POTION_CLASS, 1, -1},
     {0, 0, 0, 0, 0}
+};
 
 /* Elves get an instrument */
 static const struct trobj Instrument[] = {
