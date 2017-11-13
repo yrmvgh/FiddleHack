@@ -208,16 +208,17 @@ static const struct trobj Wizard[] = {
 
 /* Even humans get something */
 static const struct trobj Canteen[] = {
-    switch (u.ualign.type)
-        case A_LAWFUL:
-            {POT_WATER, 0, POTION_CLASS, 1, 1},
-            break;
-        case A_NEUTRAL:
-            {POT_WATER, 0, POTION_CLASS, 1, 0},
-            break;
-        case A_CHAOTIC:
-            {POT_WATER, 0, POTION_CLASS, 1, -1},
-            break;
+    switch (u.ualign.type) {
+    case A_LAWFUL:
+        {POT_WATER, 0, POTION_CLASS, 1, 1},
+        break;
+    case A_NEUTRAL:
+        {POT_WATER, 0, POTION_CLASS, 1, 0},
+        break;
+    case A_CHAOTIC:
+        {POT_WATER, 0, POTION_CLASS, 1, -1},
+        break;
+    }
     {0, 0, 0, 0, 0}
 };
 
@@ -1025,7 +1026,7 @@ ini_inv(const struct trobj *trop, short nocreate[4], enum rng rng)
             obj->dknown = obj->bknown = obj->rknown = 1;
             if (objects[otyp].oc_uses_known)
                 obj->known = 1;
-            if (obj->otype != POT_WATER)
+            if (obj->otyp != POT_WATER)
 		obj->cursed = 0;
             obj->oprops = obj->oprops_known = 0;
             if (obj->opoisoned && u.ualign.type != A_CHAOTIC)
