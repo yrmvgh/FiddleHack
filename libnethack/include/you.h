@@ -92,6 +92,8 @@ struct you {
 # define BC_CHAIN 0x02  /* bit mask for chain in 'bc_felt' below */
     int bglyph; /* glyph under the ball */
     int cglyph; /* glyph under the chain */
+    unsigned boprize:1; /* obj oprize flag under the ball */
+    unsigned coprize:1; /* obj oprize flag under the chain */
     int bc_order;       /* ball & chain order [see bc_order() in ball.c] */
     int bc_felt;        /* mask for ball/chain being felt */
 

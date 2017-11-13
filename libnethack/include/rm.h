@@ -328,6 +328,7 @@ struct rm {
                                    figurines, +1 */
     unsigned mem_invis:1;       /* remembered invisible monster encounter */
     unsigned mem_stepped:1;     /* has this square been stepped on? */
+    unsigned mem_obj_prize:1;   /* remembered obj is a level prize */
 
     schar typ;                  /* what is really there */
     uchar seenv;                /* seen vector */

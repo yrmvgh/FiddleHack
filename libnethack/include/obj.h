@@ -106,6 +106,7 @@ struct obj {
 # define norevive oeroded2
     unsigned oerodeproof:1;     /* erodeproof weapon/armor */
     unsigned olocked:1;         /* object is locked */
+#define oprize olocked          /* special sokoban prize flag */
     unsigned obroken:1;         /* lock has been broken */
     unsigned otrapped:1;        /* container is trapped */
     /* or accidental tripped rolling boulder trap */
@@ -305,7 +306,7 @@ struct obj {
 # define Is_box(otmp)   (otmp->otyp == LARGE_BOX || otmp->otyp == CHEST)
 # define Is_mbag(otmp)  (otmp->otyp == BAG_OF_HOLDING || \
                          otmp->otyp == BAG_OF_TRICKS)
-
+#define Is_prize(otmp)  ((otmp)->oprize && !Is_box(otmp))
 /* dragon gear */
 # define Is_dragon_scales(obj)  ((obj)->otyp >= GRAY_DRAGON_SCALES && \
                                  (obj)->otyp <= YELLOW_DRAGON_SCALES)
