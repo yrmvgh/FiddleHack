@@ -1371,7 +1371,7 @@ lootcont:
                    object memory table. */
                 update_obj_memory(cobj);
                 if (!cobj_is_magic_chest(cobj) && cobj->olocked) {
-                    pline("Hmmm, it seems to be locked.");
+                    pline(msgc_cancelled, "Hmmm, it seems to be locked.");
                     continue;
                 }
                 if (!cobj_is_magic_chest(cobj) &&
@@ -2071,7 +2071,7 @@ use_container(struct obj *obj, int held)
               loss, currency(loss));
     if (!cobj_is_magic_chest(obj))
         obj->owt = weight(obj);     /* in case any items were lost */
-        pline("You owe %ld %s for lost merchandise.", loss, currency(loss));
+        pline(msgc_unpaid, "You owe %ld %s for lost merchandise.", loss, currency(loss));
 
     update_container_memory(current_container);
     if (!cnt)

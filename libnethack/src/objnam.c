@@ -2806,7 +2806,7 @@ srch:
         }
         if (!BSTRCMP(bp, p - 11, "magic chest")) {
             level->locations[u.ux][u.uy].typ = MAGIC_CHEST;
-            pline("A magic chest.");
+            pline(msgc_info, "A magic chest.");
             newsym(u.ux, u.uy);
             return &zeroobj;
         }
