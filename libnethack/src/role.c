@@ -53,7 +53,7 @@ const struct Role roles[] = {
      {20, 20, 20, 10, 20, 10},
      /* Init Lower Higher */
      {11, 0, 0, 8, 1, 0},       /* Hit points */
-     {1, 0, 0, 1, 0, 1}, 14,    /* Energy */
+     {1, 0, 0, 1, 0, 1}, 12,    /* Energy */
      10, 5, 0, 2, 10, A_INT, SPE_MAGIC_MAPPING, -4},
     {{"Barbarian", 0}, {
                         {"Plunderer", "Plunderess"},
@@ -77,7 +77,7 @@ const struct Role roles[] = {
      {30, 6, 7, 20, 30, 7},
      /* Init Lower Higher */
      {14, 0, 0, 10, 2, 0},      /* Hit points */
-     {1, 0, 0, 1, 0, 1}, 10,    /* Energy */
+     {1, 0, 0, 1, 0, 1}, 12,    /* Energy */
      10, 14, 0, 0, 8, A_INT, SPE_SPEED_MONSTER, -4},
     {{"Caveman", "Cavewoman"}, {
                                 {"Troglodyte", 0},
@@ -102,7 +102,7 @@ const struct Role roles[] = {
      {30, 6, 7, 20, 30, 7},
      /* Init Lower Higher */
      {14, 0, 0, 8, 2, 0},       /* Hit points */
-     {1, 0, 0, 1, 0, 1}, 10,    /* Energy */
+     {1, 0, 0, 1, 0, 1}, 12,    /* Energy */
      10, 12, 0, 1, 8, A_INT, SPE_DIG, -4},
     {{"Healer", 0}, {
                      {"Rhizotomist", 0},
@@ -125,8 +125,8 @@ const struct Role roles[] = {
      {7, 7, 13, 7, 11, 16},
      {15, 20, 20, 15, 25, 5},
      /* Init Lower Higher */
-     {11, 0, 0, 8, 1, 0},       /* Hit points */
-     {1, 4, 0, 1, 0, 2}, 20,    /* Energy */
+     {11, 0, 0, 8, 3, 0},       /* Hit points */
+     {1, 4, 0, 1, 0, 2}, 12,    /* Energy */
      10, 3, -3, 2, 10, A_WIS, SPE_CURE_SICKNESS, -4},
     {{"Knight", 0}, {
                      {"Gallant", 0},
@@ -150,7 +150,7 @@ const struct Role roles[] = {
      {30, 15, 15, 10, 20, 10},
      /* Init Lower Higher */
      {14, 0, 0, 8, 2, 0},       /* Hit points */
-     {1, 4, 0, 1, 0, 2}, 10,    /* Energy */
+     {1, 4, 0, 1, 0, 2}, 12,    /* Energy */
      10, 8, -2, 0, 9, A_WIS, SPE_TURN_UNDEAD, -4},
     {{"Monk", 0}, {
                    {"Candidate", 0},
@@ -176,7 +176,7 @@ const struct Role roles[] = {
      {25, 10, 20, 20, 15, 10},
      /* Init Lower Higher */
      {12, 0, 0, 8, 1, 0},       /* Hit points */
-     {2, 2, 0, 2, 0, 2}, 10,    /* Energy */
+     {2, 2, 0, 2, 0, 2}, 12,    /* Energy */
      10, 8, -2, 2, 20, A_WIS, SPE_RESTORE_ABILITY, -4},
     {{"Priest", "Priestess"}, {
                                {"Aspirant", 0},
@@ -201,7 +201,7 @@ const struct Role roles[] = {
      {15, 10, 30, 15, 20, 10},
      /* Init Lower Higher */
      {12, 0, 0, 8, 1, 0},       /* Hit points */
-     {4, 3, 0, 2, 0, 2}, 10,    /* Energy */
+     {4, 3, 0, 2, 0, 2}, 12,    /* Energy */
      10, 3, -2, 2, 10, A_WIS, SPE_REMOVE_CURSE, -4},
     /* Note: Rogue precedes Ranger so that use of `-R' on the command line
        retains its traditional meaning. */
@@ -227,7 +227,7 @@ const struct Role roles[] = {
      {20, 10, 10, 30, 20, 10},
      /* Init Lower Higher */
      {10, 0, 0, 8, 1, 0},       /* Hit points */
-     {1, 0, 0, 1, 0, 1}, 11,    /* Energy */
+     {1, 0, 0, 1, 0, 1}, 12,    /* Energy */
      10, 8, 0, 1, 9, A_INT, SPE_DETECT_TREASURE, -4},
     {{"Ranger", 0}, {
                      {"Tenderfoot", 0},
@@ -276,7 +276,7 @@ const struct Role roles[] = {
      {30, 10, 8, 30, 14, 8},
      /* Init Lower Higher */
      {13, 0, 0, 8, 1, 0},       /* Hit points */
-     {1, 0, 0, 1, 0, 1}, 11,    /* Energy */
+     {1, 0, 0, 1, 0, 1}, 12,    /* Energy */
      10, 10, 0, 0, 8, A_INT, SPE_CLAIRVOYANCE, -4},
     {{"Tourist", 0}, {
                       {"Rambler", 0},
@@ -300,7 +300,7 @@ const struct Role roles[] = {
      {15, 10, 10, 15, 30, 20},
      /* Init Lower Higher */
      {8, 0, 0, 8, 0, 0},        /* Hit points */
-     {1, 0, 0, 1, 0, 1}, 14,    /* Energy */
+     {1, 0, 0, 1, 0, 1}, 12,    /* Energy */
      10, 5, 1, 2, 10, A_INT, SPE_CHARM_MONSTER, -4},
     {{"Valkyrie", 0}, {
                        {"Stripling", 0},
@@ -323,8 +323,8 @@ const struct Role roles[] = {
      {10, 7, 7, 7, 10, 7},
      {30, 6, 7, 20, 30, 7},
      /* Init Lower Higher */
-     {14, 0, 0, 8, 2, 0},       /* Hit points */
-     {1, 0, 0, 1, 0, 1}, 10,    /* Energy */
+     {14, 0, 0, 12, 0, 0},       /* Hit points */
+     {1, 0, 0, 1, 0, 1}, 12,    /* Energy */
      10, 10, -2, 0, 9, A_WIS, SPE_CONE_OF_COLD, -4},
     {{"Wizard", 0}, {
                      {"Evoker", 0},
