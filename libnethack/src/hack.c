@@ -1,5 +1,5 @@
 /* vim:set cin ft=c sw=4 sts=4 ts=8 et ai cino=Ls\:0t0(0 : -*- mode:c;fill-column:80;tab-width:8;c-basic-offset:4;indent-tabs-mode:nil;c-file-style:"k&r" -*-*/
-/* Last modified by Yer mivvaggah, 2017-11-13 */
+/* Last modified by Yer mivvaggah, 2017-11-14 */
 /* Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985. */
 /* NetHack may be freely redistributed.  See license for details. */
 
@@ -3231,7 +3231,7 @@ weight_cap(void)
     long carrcap;
 
     carrcap = 25 * (ACURRSTR + ACURR(A_CON)) + 50;
-    if (Upolyd) {
+    if (carrcap < MAX_CARR_CAP && Upolyd) {
         /* consistent with can_carry() in mon.c */
         if (youmonst.data->mlet == S_NYMPH)
             carrcap = MAX_CARR_CAP;
@@ -3243,8 +3243,8 @@ weight_cap(void)
             carrcap = (carrcap * (long)youmonst.data->cwt / WT_HUMAN);
     }
 
-    if (Levitation || Is_airlevel(&u.uz)        /* pugh@cornell */
-        ||(u.usteed && strongmonst(u.usteed->data)))
+    if (carrcap < MAX_CARR_CAP && (Levitation || Is_airlevel(&u.uz)        /* pugh@cornell */
+        ||(u.usteed && strongmonst(u.usteed->data))))
         carrcap = MAX_CARR_CAP;
     else {
         if (!Flying) {
