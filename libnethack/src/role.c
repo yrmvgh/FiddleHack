@@ -375,7 +375,7 @@ const struct Race races[] = {
      {3, 3, 3, 3, 3, 3},
      {18, 18, 18, 18, 18, 20},
      /* Init Lower Higher */
-     {2, 0, 0, 2, 1, 0},        /* Hit points */
+     {2, 0, 0, 1, 2, 0},        /* Hit points */
      {1, 0, 2, 0, 2, 0} /* Energy */
      },
     {"elf", "elven", "elvenkind", "Elf",
@@ -399,7 +399,7 @@ const struct Race races[] = {
      {3, 3, 3, 3, 3, 3},
      {STR18(100), 16, 16, 16, 20, 16},
      /* Init Lower Higher */
-     {4, 0, 0, 3, 2, 0},        /* Hit points */
+     {4, 0, 0, 5, 0, 0},        /* Hit points */
      {0, 0, 0, 0, 0, 0} /* Energy */
      },
     {"gnome", "gnomish", "gnomehood", "Gno",
@@ -423,7 +423,7 @@ const struct Race races[] = {
      {3, 3, 3, 3, 3, 3},
      {STR18(100), 16, 16, 18, 18, 16},
      /* Init Lower Higher */
-     {1, 0, 0, 1, 0, 0},        /* Hit points */
+     {2, 0, 0, 1, 0, 0},        /* Hit points */
      {1, 0, 1, 0, 1, 0} /* Energy */
      },
 /* Array terminator */
