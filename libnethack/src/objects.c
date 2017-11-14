@@ -148,7 +148,7 @@ const struct objclass const_objects[] = {
     WEAPON("axe", NULL,
            1, 0, 0, 40, 60, 8, 6, 4, 0, S, P_AXE, IRON, HI_METAL),
     WEAPON("battle-axe", "double-headed axe",
-           0, 0, 1, 10, 120, 40, 8, 6, 0, S, P_AXE, IRON, HI_METAL),
+           0, 0, 1, 10, 100, 40, 8, 6, 0, S, P_AXE, IRON, HI_METAL),
     /* "double-bitted" ? */
 
 /* swords */
@@ -173,7 +173,7 @@ const struct objclass const_objects[] = {
     WEAPON("long sword", NULL,
            1, 0, 0, 50, 40, 15, 8, 12, 0, S, P_LONG_SWORD, IRON, HI_METAL),
     WEAPON("two-handed sword", NULL,
-           1, 0, 1, 22, 150, 50, 12, 6, 0, S, P_TWO_HANDED_SWORD, IRON,
+           1, 0, 1, 22, 100, 50, 12, 6, 0, S, P_TWO_HANDED_SWORD, IRON,
            HI_METAL),
     /* +2d6 large */
     WEAPON("katana", "samurai sword",
@@ -202,19 +202,19 @@ const struct objclass const_objects[] = {
     WEAPON("glaive", "single-edged polearm",
            0, 0, 1, 8, 75, 6, 6, 10, 0, S, P_POLEARMS, IRON, HI_METAL),
     WEAPON("lance", NULL,
-           1, 0, 0, 4, 180, 10, 6, 8, 0, P, P_LANCE, IRON, HI_METAL),
+           1, 0, 0, 4, 120, 10, 6, 8, 0, P, P_LANCE, IRON, HI_METAL),
 /* axe-type */
     WEAPON("halberd", "angled poleaxe",
-           0, 0, 1, 8, 150, 10, 10, 6, 0, P | S, P_POLEARMS, IRON, HI_METAL),
+           0, 0, 1, 8, 100, 10, 10, 6, 0, P | S, P_POLEARMS, IRON, HI_METAL),
     /* +1d6 large */
     WEAPON("bardiche", "long poleaxe",
-           0, 0, 1, 4, 120, 7, 4, 4, 0, S, P_POLEARMS, IRON, HI_METAL),
+           0, 0, 1, 4, 100, 7, 4, 4, 0, S, P_POLEARMS, IRON, HI_METAL),
     /* +1d4 small, +2d4 large */
     WEAPON("voulge", "pole cleaver",
-           0, 0, 1, 4, 125, 5, 4, 4, 0, S, P_POLEARMS, IRON, HI_METAL),
+           0, 0, 1, 4, 100, 5, 4, 4, 0, S, P_POLEARMS, IRON, HI_METAL),
     /* +d4 both */
     WEAPON("dwarvish mattock", "broad pick",
-           0, 0, 1, 13, 120, 50, 12, 8, -1, B, P_PICK_AXE, IRON, HI_METAL),
+           0, 0, 1, 13, 100, 50, 12, 8, -1, B, P_PICK_AXE, IRON, HI_METAL),
 
 /* curved/hooked */
     WEAPON("fauchard", "pole sickle",
@@ -223,11 +223,11 @@ const struct objclass const_objects[] = {
            0, 0, 1, 6, 80, 5, 4, 8, 0, S, P_POLEARMS, IRON, HI_METAL),
     /* +1d4 small */
     WEAPON("bill-guisarme", "hooked polearm",
-           0, 0, 1, 4, 120, 7, 4, 10, 0, P | S, P_POLEARMS, IRON, HI_METAL),
+           0, 0, 1, 4, 100, 7, 4, 10, 0, P | S, P_POLEARMS, IRON, HI_METAL),
     /* +1d4 small */
 /* other */
     WEAPON("lucern hammer", "pronged polearm",
-           0, 0, 1, 5, 150, 7, 4, 6, 0, B | P, P_POLEARMS, IRON, HI_METAL),
+           0, 0, 1, 5, 100, 7, 4, 6, 0, B | P, P_POLEARMS, IRON, HI_METAL),
     /* +1d4 small */
     WEAPON("bec de corbin", "beaked polearm",
            0, 0, 1, 4, 100, 8, 8, 6, 0, B | P, P_POLEARMS, IRON, HI_METAL),
@@ -237,7 +237,7 @@ const struct objclass const_objects[] = {
            1, 0, 0, 40, 30, 5, 6, 6, 0, B, P_MACE, IRON, HI_METAL),
     /* +1 small */
     WEAPON("morning star", NULL,
-           1, 0, 0, 12, 120, 10, 4, 6, 0, B, P_MORNING_STAR, IRON, HI_METAL),
+           1, 0, 0, 12, 100, 10, 4, 6, 0, B, P_MORNING_STAR, IRON, HI_METAL),
     /* +d4 small, +1 large */
     WEAPON("war hammer", NULL,
            1, 0, 0, 15, 50, 5, 4, 4, 0, B, P_HAMMER, IRON, HI_METAL),
@@ -619,21 +619,21 @@ const struct objclass const_objects[] = {
          1, 0, 0, 1, IMMEDIATE, 15, 12, 200, PLASTIC, CLR_BLACK),
     TOOL("mirror", "looking glass", 0, 0, 0, 0, 45, 13, 10, GLASS, HI_SILVER),
     TOOL("crystal ball", "glass orb",
-         0, 0, 1, 1, 15, 150, 60, GLASS, HI_GLASS),
+         0, 0, 1, 1, 15, 100, 60, GLASS, HI_GLASS),
     TOOLX("lenses", NULL, 1, 0, 0, 0, 0, 5, 3, 80, GLASS, HI_GLASS, SEARCHING),
     TOOLX("blindfold", NULL, 1, 0, 0, 0, 0, 50, 2, 20, CLOTH, CLR_BLACK, BLINDED),
     TOOLX("towel", NULL, 1, 0, 0, 0, 0, 50, 2, 50, CLOTH, CLR_MAGENTA, BLINDED),
     TOOL("saddle", NULL, 1, 0, 0, 0, 5, 200, 150, LEATHER, HI_LEATHER),
     TOOL("leash", NULL, 1, 0, 0, 0, 65, 12, 20, LEATHER, HI_LEATHER),
     TOOL("stethoscope", NULL, 1, 0, 0, 0, 25, 4, 75, IRON, HI_METAL),
-    TOOL("tinning kit", NULL, 1, 0, 0, 1, 15, 100, 30, IRON, HI_METAL),
+    TOOL("tinning kit", NULL, 1, 0, 0, 1, 15, 65, 30, IRON, HI_METAL),
     TOOL("tin opener", NULL, 1, 0, 0, 0, 35, 4, 30, IRON, HI_METAL),
     TOOL("can of grease", NULL, 1, 0, 0, 1, 15, 15, 20, IRON, HI_METAL),
     TOOL("figurine", NULL, 1, 0, 1, 0, 25, 50, 80, MINERAL, HI_MINERAL),
     TOOL("magic marker", NULL, 1, 0, 1, 1, 15, 2, 50, PLASTIC, CLR_RED),
 /* traps */
-    TOOL("land mine", "explosive trap", 0, 0, 0, 0, 0, 300, 180, IRON, CLR_RED),
-    TOOL("beartrap", "toothed trap", 0, 0, 0, 0, 0, 200, 60, IRON, HI_METAL),
+    TOOL("land mine", "explosive trap", 0, 0, 0, 0, 0, 200, 180, IRON, CLR_RED),
+    TOOL("beartrap", "toothed trap", 0, 0, 0, 0, 0, 100, 60, IRON, HI_METAL),
 /* instruments */
     TOOL("tin whistle", "whistle", 0, 0, 0, 0, 100, 3, 10, METAL, HI_METAL),
     TOOL("magic whistle", "whistle", 0, 0, 1, 0, 30, 3, 10, METAL, HI_METAL),
@@ -776,9 +776,9 @@ const struct objclass const_objects[] = {
     SCROLL("genocide",        "ELBIB YLOH",           1,   15,  300),
     SCROLL("light",           "VERR YED HORRE",       1,   90,   50),
     SCROLL("teleportation",   "VENZAR BORGAVVE",      1,   55,  100),
-    SCROLL("gold detection",  "THARR",                1,   33,  100),
-    SCROLL("food detection",  "YUM YUM",              1,   25,  100),
-    SCROLL("identify",        "KERNOD WEL",           1,  180,   20),
+    SCROLL("gold detection",  "THRAR",                1,   33,  100),
+    SCROLL("food detection",  "YUM YAM",              1,   25,  100),
+    SCROLL("identify",        "KERNOD VEL",           1,  180,   20),
     SCROLL("magic mapping",   "ELAM EBOW",            1,   45,  100),
     SCROLL("amnesia",         "DUAM XNAHT",           1,   35,  200),
     SCROLL("fire",            "ANDOVA BEGARIN",       1,   30,  100),
