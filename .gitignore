@@ -1,4 +1,4 @@
-# Last modified by Alex Smith, 2014-03-11
+# Last modified by Yer mivvaggah, 2017-11-15
 build/*
 *.swp
 *.kate-swp
@@ -20,3 +20,21 @@ install_manifest.txt
 tags
 TAGS
 libnethack/util/savemap.txt
+libnethack/include/artinames.h
+libnethack/src/readonly.c
+libnethack/util/dgn_comp
+libnethack/util/dgn_comp.h
+libnethack/util/dgn_lex.c
+libnethack/util/dgn_yacc.c
+libnethack/util/dlb
+libnethack/util/lev_comp
+libnethack/util/lev_comp.h
+libnethack/util/lev_lex.c
+libnethack/util/lev_yacc.c
+libnethack/util/makedefs
+nethack/src/main
+tilesets/dat/text/base.txt
+tilesets/dat/textascii.nh4ct
+tilesets/dat/textunicode.nh4ct
+tilesets/util/basecchar
+tilesets/util/tilecompile
