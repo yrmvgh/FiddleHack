@@ -1,5 +1,5 @@
 /* vim:set cin ft=c sw=4 sts=4 ts=8 et ai cino=Ls\:0t0(0 : -*- mode:c;fill-column:80;tab-width:8;c-basic-offset:4;indent-tabs-mode:nil;c-file-style:"k&r" -*-*/
-/* Last modified by Fredrik Ljungdahl, 2017-11-07 */
+/* Last modified by Yer mivvaggah, 2017-11-16 */
 /* Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985. */
 /* NetHack may be freely redistributed.  See license for details. */
 
@@ -2801,6 +2801,12 @@ srch:
         if (!BSTRCMP(bp, p - 6, "throne")) {
             level->locations[u.ux][u.uy].typ = THRONE;
             pline(msgc_info, "A throne.");
+            newsym(u.ux, u.uy);
+            return &zeroobj;
+        }
+        if (!BSTRCMP(bp, p - 11, "magic chest")) {
+            level->locations[u.ux][u.uy].typ = MAGIC_CHEST;
+            pline(msgc_info, "A magic chest.");
             newsym(u.ux, u.uy);
             return &zeroobj;
         }

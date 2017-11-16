@@ -1,5 +1,5 @@
 /* vim:set cin ft=c sw=4 sts=4 ts=8 et ai cino=Ls\:0t0(0 : -*- mode:c;fill-column:80;tab-width:8;c-basic-offset:4;indent-tabs-mode:nil;c-file-style:"k&r" -*-*/
-/* Last modified by Fredrik Ljungdahl, 2017-10-16 */
+/* Last modified by Yer mivvaggah, 2017-11-16 */
 /* Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985. */
 /* NetHack may be freely redistributed.  See license for details. */
 
@@ -1758,6 +1758,8 @@ find_oid(unsigned id)
 
     /* try searching the current level, if any */
     if (level && (obj = find_oid_lev(level, id)))
+        return obj;
+    if ((obj = o_on(id, magic_chest_objs)))
         return obj;
 
     /* not found yet; check inventory for members of various monst lists */

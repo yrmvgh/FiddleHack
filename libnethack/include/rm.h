@@ -1,5 +1,5 @@
 /* vim:set cin ft=c sw=4 sts=4 ts=8 et ai cino=Ls\:0t0(0 : -*- mode:c;fill-column:80;tab-width:8;c-basic-offset:4;indent-tabs-mode:nil;c-file-style:"k&r" -*-*/
-/* Last modified by Fredrik Ljungdahl, 2017-10-15 */
+/* Last modified by Yer mivvaggah, 2017-11-16 */
 /* Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985. */
 /* NetHack may be freely redistributed.  See license for details. */
 
@@ -70,12 +70,13 @@
 # define SINK            29
 # define GRAVE           30
 # define ALTAR           31
-# define ICE             32
-# define DRAWBRIDGE_DOWN 33
-# define AIR             34
-# define CLOUD           35
+# define MAGIC_CHEST     32
+# define ICE             33
+# define DRAWBRIDGE_DOWN 34
+# define AIR             35
+# define CLOUD           36
 
-# define MAX_TYPE        36
+# define MAX_TYPE        37
 # define INVALID_TYPE    127
 
 /*
@@ -99,6 +100,7 @@
 # define IS_SINK(typ)       ((typ) == SINK)
 # define IS_GRAVE(typ)      ((typ) == GRAVE)
 # define IS_ALTAR(typ)      ((typ) == ALTAR)
+# define IS_MAGIC_CHEST(typ) ((typ) == MAGIC_CHEST)
 # define IS_DRAWBRIDGE(typ) ((typ) == DRAWBRIDGE_UP || (typ) == DRAWBRIDGE_DOWN)
 # define IS_FURNITURE(typ)  ((typ) >= STAIRS && (typ) <= ALTAR)
 # define IS_AIR(typ)        ((typ) == AIR || (typ) == CLOUD)
@@ -111,6 +113,7 @@
  */
 
 /* begin dungeon characters */
+/* the order here must match defexplain and defsyms in drawing.c */
 enum dungeon_symbols {
 /* 0*/ S_unexplored,
     S_stone,
@@ -134,7 +137,6 @@ enum dungeon_symbols {
     S_ice,
 /*20*/ S_lava,
     S_ndoor,
-
     S_vodoor,
     S_hodoor,
     S_vcdoor,   /* closed door, vertical wall */
@@ -142,8 +144,8 @@ enum dungeon_symbols {
     S_bars,     /* KMH -- iron bars */
     S_tree,     /* KMH */
     S_upstair,
-/*30*/ S_dnstair,
-    S_upladder,
+    S_dnstair,
+/*30*/ S_upladder,
     S_dnladder,
     S_upsstair,
     S_dnsstair,
@@ -152,11 +154,12 @@ enum dungeon_symbols {
     S_naltar,
     S_caltar,
     S_ualtar,
-/*40*/ S_aaltar, /* Non-specific Astral altar */
-    S_grave,
+    S_aaltar, /* Non-specific Astral altar */
+/*40*/ S_grave,
     S_throne,
     S_sink,
-     S_fountain,
+    S_fountain,
+    S_magic_chest,
     S_vodbridge,
     S_hodbridge,
     S_vcdbridge,        /* closed drawbridge, vertical wall */
@@ -171,7 +174,7 @@ enum dungeon_symbols {
     S_vodoor_memlt,
     S_hodoor_meml,
     S_hodoor_memt,
-    S_hodoor_memlt,
+/*50*/ S_hodoor_memlt,
     S_vcdoor_meml,
     S_vcdoor_memt,
     S_vcdoor_memlt,
