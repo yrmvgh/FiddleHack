@@ -1,5 +1,5 @@
 /* vim:set cin ft=c sw=4 sts=4 ts=8 et ai cino=Ls\:0t0(0 : -*- mode:c;fill-column:80;tab-width:8;c-basic-offset:4;indent-tabs-mode:nil;c-file-style:"k&r" -*-*/
-/* Last modified by Yer mivvaggah, 2017-11-15 */
+/* Last modified by Yer mivvaggah, 2017-11-16 */
 /* Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985. */
 /* NetHack may be freely redistributed.  See license for details. */
 
@@ -679,7 +679,8 @@ static const short grownups[][2] = {
     {PM_ELF_LORD, PM_ELVENKING},
     {PM_LICH, PM_DEMILICH}, {PM_DEMILICH, PM_MASTER_LICH},
     {PM_MASTER_LICH, PM_ARCH_LICH},
-    {PM_VAMPIRE, PM_VAMPIRE_LORD}, {PM_BAT, PM_GIANT_BAT},
+    {PM_VAMPIRE, PM_VAMPIRE_LORD},
+    {PM_BAT, PM_GIANT_BAT, PM_MASSIVE_BAT},
     {PM_BABY_GRAY_DRAGON, PM_GRAY_DRAGON},
     {PM_BABY_SILVER_DRAGON, PM_SILVER_DRAGON},
     {PM_BABY_SHIMMERING_DRAGON, PM_SHIMMERING_DRAGON},

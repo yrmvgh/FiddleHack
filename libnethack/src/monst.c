@@ -1,5 +1,5 @@
 /* vim:set cin ft=c sw=4 sts=4 ts=8 et ai cino=Ls\:0t0(0 : -*- mode:c;fill-column:80;tab-width:8;c-basic-offset:4;indent-tabs-mode:nil;c-file-style:"k&r" -*-*/
-/* Last modified by Yer mivvaggah, 2017-11-15 */
+/* Last modified by Yer mivvaggah, 2017-11-16 */
 /* Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985. */
 /* NetHack may be freely redistributed.  See license for details. */
 
@@ -1183,6 +1183,14 @@ const struct permonst mons[] = {
         SIZ(30, 20, 0, MS_SQEEK, MZ_SMALL), MR_SLEEP | MR_POISON, 0,
         M1_FLY | M1_ANIMAL | M1_NOHANDS | M1_POIS | M1_REGEN | M1_OMNIVORE,
         M2_HOSTILE, M3_INFRAVISIBLE, 0, CLR_MAGENTA),
+    MON("massive bat", S_BAT,
+        LVL(6, 22, 3, 10, 0), (G_GENO | 1),
+        A(ATTK(AT_BITE, AD_PHYS, 2, 4),
+          NO_ATTK, NO_ATTK, NO_ATTK, NO_ATTK, NO_ATTK),
+        SIZ(400, 100, 0, MS_SQEEK, MZ_LARGE), MR_ELEC, 0,
+        M1_FLY | M1_ANIMAL | M1_NOHANDS | M1_CARNIVORE,
+        M2_WANDER | M2_HOSTILE | M2_STUNNED, M3_INFRAVISIBLE,
+        0, CLR_RED | HI_ULINE),
 /*
  * Centaurs
  */
