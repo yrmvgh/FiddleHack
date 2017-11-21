@@ -1,5 +1,5 @@
 # Emacs, the format of this file is: -*- mode:text;fill-column:86;tab-width:8;indent-tabs-mode:t -*-
-# Last modified by Yer mivvaggah, 2017-11-15
+# Last modified by Yer mivvaggah, 2017-11-21
 #	Copyright (c) 2010 by Alex Smith
 #	NetHack may be freely redistributed.
 #       See license for details.
@@ -2952,6 +2952,9 @@ raven
 	This bird has a tendency to claw at the eyes.
 vampire bat
 	Vampire bats fly erratically and have a poisonous bite.
+massive bat
+	This enormous flying beast prefers the dark and the night, but can stay
+	aloft for three weeks without resting, through any weather.
 
 plains centaur
 forest centaur
