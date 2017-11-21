@@ -1,5 +1,5 @@
 About this document:
-Last modified by Fredrik Ljungdahl, 2015-11-03
+Last modified by Yer mivvaggah, 2017-11-21
 
 Copyright (C) 2013 Alex Smith.
 
@@ -16,7 +16,7 @@ that have been asked less often but I expect to be asked and thus need
 to be answered pre-emptively, together with their answers.
 
 
-About FIQHack
+About FiddleHack
 =============
 
 What is NetHack?
@@ -44,15 +44,14 @@ allowing you to build the character you want to play, rather than on trying to
 make do with a limited number of tools.
 
 
-What is FIQHack?
+What is FiddleHack?
 ----------------
 
-FIQHack is a derivative (fork) of NetHack4. It is similar to NetHack4, but
-has a few original balance changes after the author's liking, as well as some
-significant internal changes to the codebase.
+FiddleHack is a derivative (fork) of FIQhack. It is similar to FIQhack, but
+has been "fiddled with" to produce a variation to the author's tastes.
 
 
-Why FIQHack?
+Why FiddleHack? And why FIQhack?
 ------------
 
 FIQHack was made because the author wanted to improve NetHack's monster AI,
@@ -176,8 +175,8 @@ we couldn't stop spambots using it.)
 What about playing in tournaments?
 ----------------------------------
 
-FIQHack has currently not had any tournaments of sorts, but may or may not show
-up in the annual [Junethack tournament][5] in June 2016.
+FiddleHack has currently not had any tournaments of sorts, but may or may not show
+up in the annual [Junethack tournament][5] in June 2018.
 
 
 What license is the code under?
@@ -224,16 +223,18 @@ the code and otherwise modify the game as you like.
 How can I play on a public server?
 ----------------------------------
 
-The official (and to our knowledge, only) public server is nethack4.org.  Open
+The best public server for NetHack4 and FIQhack is hardfought.org.  Open
 a terminal in your favourite terminal emulator, and use telnet (default
-settings) or ssh (username "nethack43", password "nethack43") to connect. At
-the command prompt:
+settings) or ssh (username "nethack") to connect. At the command prompt:
 
-    telnet nethack4.org
+    telnet hardfought.org
 
 or
 
-    ssh nethack43@nethack4.org
+    ssh nethack@hardfought.org
+
+In time, the author hopes to see FiddleHack on that server, or on a similar
+server at ascension.run. (ssh nethack@ascension.run)
 
 You'll be asked to give a username and password upon connecting; if you use a
 currently unknown username, you'll be prompted to create an account.
@@ -305,14 +306,7 @@ from source.
 What does the "connect to server" option in the main menu do?
 -------------------------------------------------------------
 
-NetHack 4 inherits a server API from NitroHack that should theoretically allow
-a local executable (even tiles) to play on a remote system.  This mode works
-fine in testing, but there are no publically available servers right now to
-connect to, so it's not that useful in practice.
-
-We don't host such a server on nethack4.org because there are known security
-problems in the implementation (which do not affect local play).
-
+It does not currently work.
 
 Does NetHack 4 depend on curses/ncurses?
 ----------------------------------------
