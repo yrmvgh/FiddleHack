@@ -391,13 +391,14 @@ dipfountain(struct obj *obj)
         return;
     }
 
-    /* Don't grant Excalibur when there's more than one object.  */
+    /* Don't grant Excal/Vorpal when there's more than one object.  */
     /* (quantity could be > 1 if merged daggers got polymorphed) */
     if (obj->otyp == LONG_SWORD && obj->quan == 1L && u.ulevel >= 5 &&
         !obj->oartifact && !rn2_on_rng(6, rng_excalibur) &&
+        !exist_artifact(LONG_SWORD, artiname(ART_VORPAL_BLADE)) &&
         !exist_artifact(LONG_SWORD, artiname(ART_EXCALIBUR))) {
 
-        if (u.ualign.type != A_LAWFUL) {
+        if (u.ualign.type == A_CHAOTIC) {
             /* Ha! Trying to cheat her. */
             pline(msgc_itemloss, "A freezing mist rises from the water "
                   "and envelopes the sword.");
@@ -407,6 +408,18 @@ dipfountain(struct obj *obj)
                 obj->spe--;
             obj->oerodeproof = FALSE;
             exercise(A_WIS, FALSE);
+        } else if (u.ualign.type == A_NEUTRAL) {
+            /* The bird of the lake acts! */
+            pline(msgc_intrgain, "From the murky depths, a claw seizes the "
+                  "pommel of the sword!");
+            pline(msgc_consequence, "As the claw vanishes, so does the "
+                  "fountain.");
+            obj = oname(obj, artiname(ART_VORPAL_BLADE));
+            discover_artifact(ART_VORPAL_BLADE);
+            bless(obj);
+            obj->oeroded = obj->oeroded2 = 0;
+            obj->oerodeproof = TRUE;
+            exercise(A_INT, TRUE);
         } else {
             /* The lady of the lake acts! - Eric Backus */
             /* Be *REAL* nice */
