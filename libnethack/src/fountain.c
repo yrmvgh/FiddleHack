@@ -1,5 +1,5 @@
 /* vim:set cin ft=c sw=4 sts=4 ts=8 et ai cino=Ls\:0t0(0 : -*- mode:c;fill-column:80;tab-width:8;c-basic-offset:4;indent-tabs-mode:nil;c-file-style:"k&r" -*-*/
-/* Last modified by Yer mivvaggah, 2017-11-21 */
+/* Last modified by Yer mivvaggah, 2017-11-26 */
 /* Copyright Scott R. Turner, srt@ucla, 10/27/86                  */
 /* NetHack may be freely redistributed.  See license for details. */
 
@@ -393,9 +393,10 @@ dipfountain(struct obj *obj)
     /* (quantity could be > 1 if merged daggers got polymorphed) */
     if (obj->otyp == LONG_SWORD && obj->quan == 1L && u.ulevel >= 5 &&
         !obj->oartifact && !rn2_on_rng(6, rng_excalibur) &&
+        !exist_artifact(LONG_SWORD, artiname(ART_VORPAL_BLADE)) &&
         !exist_artifact(LONG_SWORD, artiname(ART_EXCALIBUR))) {
 
-        if (u.ualign.type = A_CHAOTIC) {
+        if (u.ualign.type == A_CHAOTIC) {
             /* Ha! Trying to cheat her. */
             pline(msgc_itemloss, "A freezing mist rises from the water "
                   "and envelopes the sword.");
@@ -405,7 +406,7 @@ dipfountain(struct obj *obj)
                 obj->spe--;
             obj->oerodeproof = FALSE;
             exercise(A_WIS, FALSE);
-        } else if (u.ualign.type = A_NEUTRAL) {
+        } else if (u.ualign.type == A_NEUTRAL) {
             /* The bird of the lake acts! */
             pline(msgc_intrgain, "From the murky depths, a claw seizes the "
                   "pommel of the sword!");
