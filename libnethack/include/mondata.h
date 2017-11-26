@@ -1,5 +1,5 @@
 /* vim:set cin ft=c sw=4 sts=4 ts=8 et ai cino=Ls\:0t0(0 : -*- mode:c;fill-column:80;tab-width:8;c-basic-offset:4;indent-tabs-mode:nil;c-file-style:"k&r" -*-*/
-/* Last modified by Yer mivvaggah, 2017-11-16 */
+/* Last modified by Yer mivvaggah, 2017-11-26 */
 /* Copyright (c) 1989 Mike Threepoint                             */
 /* NetHack may be freely redistributed.  See license for details. */
 
@@ -173,8 +173,8 @@
 # define your_race(ptr)         (((ptr)->mflags2 & urace.selfmask) != 0L)
 # define is_bat(ptr)            ((ptr) == &mons[PM_BAT] || \
                                  (ptr) == &mons[PM_GIANT_BAT] || \
-                                 (ptr) == &mons[PM_MASSIVE_BAT] || \
-                                 (ptr) == &mons[PM_VAMPIRE_BAT])
+                                 (ptr) == &mons[PM_VAMPIRE_BAT] || \
+                                 (ptr) == &mons[PM_MASSIVE_BAT])
 # define is_bird(ptr)           ((ptr)->mlet == S_BAT && !is_bat(ptr))
 # define is_giant(ptr)          (((ptr)->mflags2 & M2_GIANT) != 0L)
 # define is_golem(ptr)          ((ptr)->mlet == S_GOLEM)

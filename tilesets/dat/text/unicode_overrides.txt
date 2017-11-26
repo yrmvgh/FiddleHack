@@ -1,4 +1,4 @@
-! Last modified by Fredrik Ljungdahl, 2017-10-19
+! Last modified by Yer mivvaggah, 2017-11-26
 ! Copyright (C) 2014 Alex Smith
 ! NetHack may be freely redistributed. See license for details.
 !
@@ -17,10 +17,10 @@
 ! Unicodey terrain.
 walls 0: basefg '│'
 walls 1: basefg '─'
-walls 2: basefg '┌'
+walls 2: basefg '/'
 walls 3: basefg '┐'
 walls 4: basefg '└'
-walls 5: basefg '┘'
+walls 5: basefg '/'
 walls 6: basefg '┼'
 walls 7: basefg '┴'
 walls 8: basefg '┬'

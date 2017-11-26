@@ -1,4 +1,4 @@
-! Last modified by Fredrik Ljungdahl, 2017-11-02
+! Last modified by Yer mivvaggah, 2017-11-26
 !
 ! Copyright (C) 2014 Alex Smith
 !
@@ -947,6 +947,7 @@ Archon: [Humanoid0.png] 0x82
 bat: [Avian0.png] 0x58
 giant bat: [Avian0.png] 0x59
 vampire bat: [Avian0.png] 0x5A
+massive bat: [Avian0.png] 0x59
 
 raven: [Avian0.png] 0x9
 
