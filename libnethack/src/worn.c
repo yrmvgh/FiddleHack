@@ -18,7 +18,7 @@ static unsigned do_equip(struct monst *, struct obj *, boolean, boolean);
        o->oartifact == ART_SUNSWORD) &&                                 \
       ((m) & W_MASK(os_tool))) ? BLINDED :                              \
      (o->otyp == CORNUTHAUM && ((m) & W_MASK(os_armh)) &&               \
-      !Role_if (PM_WIZARD)) ? CLAIRVOYANT : 0)
+      !Role_if (PM_WIZARD) && !Race_if (PM_GNOME)) ? CLAIRVOYANT : 0)
                 /* note: monsters don't have clairvoyance, so your role has no
                    significant effect on their use of w_blocks() */
 

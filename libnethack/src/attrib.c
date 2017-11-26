@@ -638,7 +638,7 @@ const char *
 beautiful(void)
 {
     return ACURR(A_CHA) > 14 ?
-        (poly_gender() == 1 ? "beautiful" : "handsome") : "ugly";
+        "dazzling" : "ugly";
 }
 
 /* Calculate attribute bonus from worn armor/rings/etc. */
@@ -676,10 +676,11 @@ attr_bonus(const struct monst *mon, int attrib)
             ascore += obj->spe;
         /* cornuthaums give +1/-1 cha depending on
            if you're a spellcaster or not */
-        if (attrib == A_CHA && otyp == CORNUTHAUM)
-        if (attrib == A_INT && otyp == CORNUTHAUM)
-        if (attrib == A_WIS && otyp == CORNUTHAUM)
+        if ((attrib == A_CHA && otyp == CORNUTHAUM) ||
+            (attrib == A_INT && otyp == CORNUTHAUM) ||
+            (attrib == A_WIS && otyp == CORNUTHAUM))
             ascore += ((you && Role_if(PM_WIZARD)) ||
+                       (you && Race_if(PM_GNOME)) ||
                        (!you && spellcaster(mon->data))) ?
                 1 : -1;
     }
