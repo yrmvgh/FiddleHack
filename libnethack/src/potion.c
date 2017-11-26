@@ -1935,7 +1935,8 @@ dodip(const struct nh_cmd_arg *arg)
 
     here = level->locations[u.ux][u.uy].typ;
     /* Is there a fountain or pool to dip into here? */
-    if ((IS_FOUNTAIN(here) || is_pool(level, u.ux, u.uy)) &&
+    if ((IS_FOUNTAIN(here) || is_pool(level, u.ux, u.uy) ||
+         is_lava(level, u.ux, u.uy)) &&
         !Levitation &&
         !(u.usteed && !swims(u.usteed) &&
           P_SKILL(P_RIDING) < P_BASIC &&
@@ -1953,6 +1954,25 @@ dodip(const struct nh_cmd_arg *arg)
     if (potion == &zeroobj) {
         if (IS_FOUNTAIN(here))
             dipfountain(obj);
+        else if (is_lava(level, u.ux, u.uy)) {
+            fire_damage(obj, TRUE, TRUE, u.ux, u.uy);
+            if (u.ualign.type == A_CHAOTIC && obj->otyp == BROADSWORD &&
+                obj->quan == 1L && u.ulevel >= 5 && !obj->oartifact &&
+                !rn2_on_rng(6, rng_excalibur) &&
+                !exist_artifact(RUNESWORD, artiname(ART_STORMBRINGER))) {
+                /* The lord of the lava acts! */
+                pline(msgc_intrgain, "From the brimstone, a mailed fist "
+                      "channels unholy magic into the blade.");
+                obj->otyp = RUNESWORD;
+                obj = oname(obj, artiname(ART_STORMBRINGER));
+                discover_artifact(ART_STORMBRINGER);
+                bless(obj);
+                obj->oeroded = obj->oeroded2 = 0;
+                obj->oerodeproof = TRUE;
+                obj->spe++;
+                exercise(A_CHA, TRUE);
+                }
+        }
         else {
             water_damage(obj, NULL, TRUE);
             if (obj->otyp == POT_ACID)
