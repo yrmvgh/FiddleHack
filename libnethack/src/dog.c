@@ -157,7 +157,7 @@ makedog(struct newgame_options *ngo)
         petname = ngo->catname;
 
     /* default pet names */
-    if (!*petname && pettype == PM_LITTLE_DOG) {
+    if (!*petname) {
         /* All of these names were for dogs. */
         if (Role_if(PM_CAVEMAN))
             petname = "Slasher";        /* The Warrior */
