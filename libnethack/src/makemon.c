@@ -659,6 +659,10 @@ m_initinv(struct monst *mtmp, enum rng rng)
         }
         break;
     case S_LICH:
+        if (ptr != &mons[PM_LICH])
+            otmp = mksobj(lev, POT_WATER, FALSE, FALSE, rng);
+            curse(otmp);
+            mpickobj(mtmp, otmp, NULL);
         if (ptr == &mons[PM_MASTER_LICH] && !rn2_on_rng(13, rng))
             mongets(mtmp, (rn2_on_rng(7, rng) ? ATHAME : WAN_NOTHING), rng);
         else if (ptr == &mons[PM_ARCH_LICH] && !rn2_on_rng(3, rng)) {
