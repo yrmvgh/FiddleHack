@@ -1,5 +1,5 @@
 /* vim:set cin ft=c sw=4 sts=4 ts=8 et ai cino=Ls\:0t0(0 : -*- mode:c;fill-column:80;tab-width:8;c-basic-offset:4;indent-tabs-mode:nil;c-file-style:"k&r" -*-*/
-/* Last modified by Fredrik Ljungdahl, 2017-11-02 */
+/* Last modified by Yer mivvaggah, 2017-11-26 */
 /* Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985. */
 /* NetHack may be freely redistributed.  See license for details. */
 
@@ -17,7 +17,7 @@ static unsigned do_equip(struct monst *, struct obj *, boolean, boolean);
      (o->oartifact == ART_EYES_OF_THE_OVERWORLD &&                      \
       ((m) & W_MASK(os_tool))) ? BLINDED :                              \
      (o->otyp == CORNUTHAUM && ((m) & W_MASK(os_armh)) &&               \
-      !Role_if (PM_WIZARD)) ? CLAIRVOYANT : 0)
+      !Role_if (PM_WIZARD) && !Race_if (PM_GNOME)) ? CLAIRVOYANT : 0)
                 /* note: monsters don't have clairvoyance, so your role has no
                    significant effect on their use of w_blocks() */
 
