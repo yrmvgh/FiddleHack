@@ -198,10 +198,10 @@ static const struct trobj Wizard[] = {
 #define W_MULTEND       6
     {QUARTERSTAFF, 1, WEAPON_CLASS, 1, 1},
     {CLOAK_OF_MAGIC_RESISTANCE, 0, ARMOR_CLASS, 1, UNDEF_BLESS},
-    {WAN_STRIKING, UNDEF_SPE, WAND_CLASS, 1, UNDEF_BLESS},
+    {SCR_REMOVE_CURSE, 0, SCROLL_CLASS, 2, UNDEF_BLESS},
+    {WAN_MAGIC_MISSILE, 5, WAND_CLASS, 1, UNDEF_BLESS},
+    {WAN_ENLIGHTENMENT, 5, WAND_CLASS, 1, UNDEF_BLESS},
     {SPE_FORCE_BOLT, 0, SPBOOK_CLASS, 1, 1},
-    {SPE_MAGIC_MISSILE, 0, SPBOOK_CLASS, 1, 1},
-    {UNDEF_TYP, UNDEF_SPE, SPBOOK_CLASS, 1, 1},
     {UNDEF_TYP, UNDEF_SPE, SPBOOK_CLASS, 1, 1},
     {BLINDFOLD, 0, TOOL_CLASS, 1, 0},
     {0, 0, 0, 0, 0}
@@ -533,7 +533,7 @@ copy_trobj_list(const struct trobj *list)
 {
     struct trobj *copy;
     int len = 0;
-    
+
     while (list[len].trotyp || list[len].trclass)
         len++;
     len++;      /* list is terminated by an entry of zeros */
