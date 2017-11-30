@@ -1,5 +1,5 @@
 /* vim:set cin ft=c sw=4 sts=4 ts=8 et ai cino=Ls\:0t0(0 : -*- mode:c;fill-column:80;tab-width:8;c-basic-offset:4;indent-tabs-mode:nil;c-file-style:"k&r" -*-*/
-/* Last modified by Yer mivvaggah, 2017-11-13 */
+/* Last modified by Yer mivvaggah, 2017-11-29 */
 /* Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985. */
 /* NetHack may be freely redistributed.  See license for details. */
 
@@ -198,10 +198,10 @@ static const struct trobj Wizard[] = {
 #define W_MULTEND       6
     {QUARTERSTAFF, 1, WEAPON_CLASS, 1, 1},
     {CLOAK_OF_MAGIC_RESISTANCE, 0, ARMOR_CLASS, 1, UNDEF_BLESS},
-    {WAN_STRIKING, UNDEF_SPE, WAND_CLASS, 1, UNDEF_BLESS},
+    {SCR_REMOVE_CURSE, 0, SCROLL_CLASS, 2, UNDEF_BLESS},
+    {WAN_MAGIC_MISSILE, 5, WAND_CLASS, 1, UNDEF_BLESS},
+    {WAN_ENLIGHTENMENT, 5, WAND_CLASS, 1, UNDEF_BLESS},
     {SPE_FORCE_BOLT, 0, SPBOOK_CLASS, 1, 1},
-    {SPE_MAGIC_MISSILE, 0, SPBOOK_CLASS, 1, 1},
-    {UNDEF_TYP, UNDEF_SPE, SPBOOK_CLASS, 1, 1},
     {UNDEF_TYP, UNDEF_SPE, SPBOOK_CLASS, 1, 1},
     {BLINDFOLD, 0, TOOL_CLASS, 1, 0},
     {0, 0, 0, 0, 0}
@@ -533,7 +533,7 @@ copy_trobj_list(const struct trobj *list)
 {
     struct trobj *copy;
     int len = 0;
-    
+
     while (list[len].trotyp || list[len].trclass)
         len++;
     len++;      /* list is terminated by an entry of zeros */
