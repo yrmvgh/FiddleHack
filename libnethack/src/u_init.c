@@ -1,5 +1,5 @@
 /* vim:set cin ft=c sw=4 sts=4 ts=8 et ai cino=Ls\:0t0(0 : -*- mode:c;fill-column:80;tab-width:8;c-basic-offset:4;indent-tabs-mode:nil;c-file-style:"k&r" -*-*/
-/* Last modified by Yer mivvaggah, 2017-11-29 */
+/* Last modified by Yer mivvaggah, 2017-12-02 */
 /* Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985. */
 /* NetHack may be freely redistributed.  See license for details. */
 
@@ -289,7 +289,7 @@ static const struct inv_sub {
     {PM_DWARF, SHORT_SWORD, DWARVISH_SHORT_SWORD},
     {PM_DWARF, HELMET, DWARVISH_IRON_HELM},
     {PM_DWARF, SMALL_SHIELD, DWARVISH_ROUNDSHIELD},
-    {PM_DWARF, PICK_AXE, DWARVISH_MATTOCK },
+    /* {PM_DWARF, PICK_AXE, DWARVISH_MATTOCK }, */
     {PM_GNOME, BOW, CROSSBOW},
     {PM_GNOME, ARROW, CROSSBOW_BOLT},
     {NON_PM, STRANGE_OBJECT, STRANGE_OBJECT}
@@ -796,7 +796,7 @@ u_init_inv_skills(void)
         knows_object(ELVEN_SHIELD);
         knows_object(ELVEN_BOOTS);
         knows_object(ELVEN_CLOAK);
-        augment_skill_cap(P_BOW, 1, P_BASIC, P_SKILLED);
+        augment_skill_cap(P_BOW, 1, P_BASIC, P_MASTER);
         break;
     }
     case PM_DWARF:
@@ -811,7 +811,7 @@ u_init_inv_skills(void)
         knows_object(DWARVISH_MITHRIL_COAT);
         knows_object(DWARVISH_CLOAK);
         knows_object(DWARVISH_ROUNDSHIELD);
-        augment_skill_cap(P_PICK_AXE, 1, P_SKILLED, P_EXPERT);
+        augment_skill_cap(P_PICK_AXE, 1, P_SKILLED, P_MASTER);
         break;
 
     case PM_GNOME:
@@ -822,8 +822,8 @@ u_init_inv_skills(void)
         knows_object(TOUCHSTONE);
         knows_object(DIAMOND);
 
-        augment_skill_cap(P_CROSSBOW, 2, P_SKILLED, P_EXPERT);
-        augment_skill_cap(P_CLUB, 1, P_SKILLED, P_MASTER);
+        augment_skill_cap(P_CROSSBOW, 1, P_BASIC, P_MASTER);
+        augment_skill_cap(P_CLUB, 1, P_BASIC, P_MASTER);
         break;
 
     case PM_ORC:
@@ -842,7 +842,7 @@ u_init_inv_skills(void)
         knows_object(ORCISH_SHIELD);
         knows_object(URUK_HAI_SHIELD);
         knows_object(ORCISH_CLOAK);
-        augment_skill_cap(P_SCIMITAR, 2, P_SKILLED, P_MASTER);
+        augment_skill_cap(P_SCIMITAR, 1, P_BASIC, P_MASTER);
         break;
 
     default:   /* impossible */

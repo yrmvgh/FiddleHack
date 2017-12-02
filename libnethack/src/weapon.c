@@ -1,5 +1,5 @@
 /* vim:set cin ft=c sw=4 sts=4 ts=8 et ai cino=Ls\:0t0(0 : -*- mode:c;fill-column:80;tab-width:8;c-basic-offset:4;indent-tabs-mode:nil;c-file-style:"k&r" -*-*/
-/* Last modified by Yer mivvaggah, 2017-11-13 */
+/* Last modified by Yer mivvaggah, 2017-12-02 */
 /* Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985. */
 /* NetHack may be freely redistributed.  See license for details. */
 
@@ -1298,7 +1298,7 @@ weapon_hit_bonus(struct obj *weapon)
             impossible(bad_skill, P_SKILL(type));       /* fall through */
         case P_ISRESTRICTED:
         case P_UNSKILLED:
-            bonus = -4;
+            bonus = -2;
             break;
         case P_BASIC:
             bonus = 0;
@@ -1307,7 +1307,10 @@ weapon_hit_bonus(struct obj *weapon)
             bonus = 2;
             break;
         case P_EXPERT:
-            bonus = 3;
+            bonus = 4;
+            break;
+        case P_MASTER:
+            bonus = 6;
             break;
         }
     } else if (type == P_TWO_WEAPON_COMBAT) {
@@ -1400,7 +1403,10 @@ weapon_dam_bonus(struct obj *weapon)
             bonus = 1;
             break;
         case P_EXPERT:
-            bonus = 2;
+            bonus = 3;
+            break;
+        case P_MASTER:
+            bonus = 5;
             break;
         }
     } else if (type == P_TWO_WEAPON_COMBAT) {
