@@ -1,5 +1,5 @@
 /* vim:set cin ft=c sw=4 sts=4 ts=8 et ai cino=Ls\:0t0(0 : -*- mode:c;fill-column:80;tab-width:8;c-basic-offset:4;indent-tabs-mode:nil;c-file-style:"k&r" -*-*/
-/* Last modified by Yer mivvaggah, 2017-11-15 */
+/* Last modified by Yer mivvaggah, 2017-12-02 */
 /* Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985. */
 /* NetHack may be freely redistributed.  See license for details. */
 
@@ -44,8 +44,8 @@ find_roll_to_hit(struct monst *mtmp)
     int tmp2;
 
     tmp =
-        1 + Luck + abon() + find_mac(mtmp) + hitbon(&youmonst) +
-        maybe_polyd(youmonst.data->mlevel, u.ulevel);
+        1 + (Luck / 2) + abon() + find_mac(mtmp) + hitbon(&youmonst) +
+        ((1 + maybe_polyd(youmonst.data->mlevel, u.ulevel)) / 2);
 
     check_caitiff(mtmp);
 
