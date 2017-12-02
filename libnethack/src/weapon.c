@@ -1296,7 +1296,7 @@ weapon_hit_bonus(struct obj *weapon)
             impossible(bad_skill, P_SKILL(type));       /* fall through */
         case P_ISRESTRICTED:
         case P_UNSKILLED:
-            bonus = -4;
+            bonus = -2;
             break;
         case P_BASIC:
             bonus = 0;
@@ -1305,7 +1305,10 @@ weapon_hit_bonus(struct obj *weapon)
             bonus = 2;
             break;
         case P_EXPERT:
-            bonus = 3;
+            bonus = 4;
+            break;
+        case P_MASTER:
+            bonus = 6;
             break;
         }
     } else if (type == P_TWO_WEAPON_COMBAT) {
@@ -1398,7 +1401,10 @@ weapon_dam_bonus(struct obj *weapon)
             bonus = 1;
             break;
         case P_EXPERT:
-            bonus = 2;
+            bonus = 3;
+            break;
+        case P_MASTER:
+            bonus = 5;
             break;
         }
     } else if (type == P_TWO_WEAPON_COMBAT) {
