@@ -1226,6 +1226,28 @@ dosearch0(int aflag)
         return 1;
     }
 
+    if (u.uhunger < 150 && Role_if(PM_RANGER)) {
+        if (!rn2(100)) {
+            pline(msgc_nonmonbad, "You hunt down a tasty dungeon creature!");
+            switch (rnd(4)) {
+                case 1:
+                    makemon(&mons[PM_NEWT], level, u.ux, u.uy, NO_MINVENT);
+                    break;
+                case 2:
+                    makemon(&mons[PM_LICHEN], level, u.ux, u.uy, NO_MINVENT);
+                    break;
+                case 3:
+                    makemon(mkclass(&u.uz, S_BLOB, 0, rng_main), level,
+                            u.ux, u.uy, NO_MINVENT);
+                    break;
+                case 4:
+                    makemon(mkclass(&u.uz, S_BAT, 0, rng_main), level,
+                            u.ux, u.uy, NO_MINVENT);
+                    break;
+            }
+        }
+    }
+
     /* We can't use do_clear_area because it iterates a ball radius, and it will be
        blocked by secret doors/corridors... Instead, iterate a 11x11 square centered on
        the player. The iteration is done in an outwards "spiral" to avoid oddities where
