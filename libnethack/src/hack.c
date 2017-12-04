@@ -3235,7 +3235,7 @@ weight_cap(void)
     if (Upolyd) {
         /* consistent with can_carry() in mon.c */
         if (youmonst.data->mlet == S_NYMPH)
-            carrcap = MAX_CARR_CAP;
+            carrcap = 2 * MAX_CARR_CAP;
         else if (!youmonst.data->cwt)
             carrcap = (carrcap * (long)youmonst.data->msize) / MZ_HUMAN;
         else if (!strongmonst(youmonst.data)
@@ -3246,7 +3246,7 @@ weight_cap(void)
 
     if (Levitation || Is_airlevel(&u.uz)        /* pugh@cornell */
         ||(u.usteed && strongmonst(u.usteed->data)))
-        carrcap = MAX_CARR_CAP;
+        carrcap += 100;
     else {
         if (!Flying) {
             if (leg_hurtl(u.usteed ? u.usteed : &youmonst))
