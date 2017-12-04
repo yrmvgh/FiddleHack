@@ -113,6 +113,10 @@ throw_obj(struct obj *obj, const struct nh_cmd_arg *arg,
         }
         /* ...or is using a special weapon for their role... */
         switch (Role_switch) {
+        case PM_CAVEMAN:
+            if (skill == P_SLING)
+            multishot++;
+            break;
         case PM_RANGER:
             multishot++;
             break;
@@ -121,20 +125,21 @@ throw_obj(struct obj *obj, const struct nh_cmd_arg *arg,
                 multishot++;
             break;
         case PM_SAMURAI:
-            if (obj->otyp == YA && uwep && uwep->otyp == YUMI)
+            /* samurai may prefer yumi, but have the skill to rock any bow */
+            if (obj->otyp == YA && uwep)
                 multishot++;
             break;
         default:
             break;      /* No bonus */
         }
-        /* ...or using their race's special bow */
+        /* ...or using their race's special ammo */
         switch (Race_switch) {
         case PM_ELF:
             if (obj->otyp == ELVEN_ARROW && uwep && uwep->otyp == ELVEN_BOW)
                 multishot++;
             break;
         case PM_ORC:
-            if (obj->otyp == ORCISH_ARROW && uwep && uwep->otyp == ORCISH_BOW)
+            if (obj->otyp == ORCISH_ARROW && uwep)
                 multishot++;
             break;
         default:
