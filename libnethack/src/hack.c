@@ -3248,8 +3248,6 @@ weight_cap(void)
         ||(u.usteed && strongmonst(u.usteed->data)))
         carrcap = MAX_CARR_CAP;
     else {
-        if (carrcap > MAX_CARR_CAP)
-            carrcap = MAX_CARR_CAP;
         if (!Flying) {
             if (leg_hurtl(u.usteed ? u.usteed : &youmonst))
                 carrcap -= 100;
