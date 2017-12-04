@@ -13,7 +13,7 @@ script:
 
 notifications:
     irc:
-        channels: "chat.freenode.net#nethack4"
+        channels: "chat.freenode.net#FiddleHack"
         on_success: always
         on_failure: always
         template:
