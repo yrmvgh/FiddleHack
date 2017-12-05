@@ -452,9 +452,10 @@ can_twoweapon(void)
     } else if (uarms)
         pline(msgc_cancelled,
               "You can't use two weapons while wearing a shield.");
-    else if (uswapwep->oartifact)
-        pline(msgc_cancelled, "%s %s being held second to another weapon!",
-              Yname2(uswapwep), otense(uswapwep, "resist"));
+    else if (uswapwep->oartifact && weapon_type(uswapwep) != P_DAGGER) {
+            pline(msgc_cancelled, "%s %s being held second to another weapon!",
+                  Yname2(uswapwep), otense(uswapwep, "resist"));
+    }
     else if (!uarmg && !Stone_resistance &&
              (uswapwep->otyp == CORPSE &&
               touch_petrifies(&mons[uswapwep->corpsenm]))) {
