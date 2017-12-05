@@ -625,7 +625,8 @@ mksobj(struct level *lev, int otyp, boolean init, boolean artif, enum rng rng)
 
             if (artif && !rn2_on_rng(20, rng))
                 otmp = mk_artifact(lev, otmp, (aligntyp) A_NONE, rng);
-            else if ((otmp->spe > (1 + rn2_on_rng(5, rng))) && (!otmp->cursed))
+            else if ((otmp->oprops + otmp->spe > (1 + rn2_on_rng(5, rng)))
+                     && (!otmp->cursed))
                 otmp = oname_random_weapon(otmp, rng);
 
             break;

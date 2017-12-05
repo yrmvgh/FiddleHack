@@ -150,13 +150,12 @@ oname_random_weapon(struct obj *wpn, enum rng rng)
     /* Don't randomly name stacks. */
     if (wpn->quan > 1)
         return wpn;
-    switch(rn2_on_rng(35, rng)) {
+    switch(rn2_on_rng(38, rng)) {
     case 1:
         return oname(wpn, msgprintf("%s of Justice", basename));
     case 2:
-        return oname(wpn, msgprintf("%s of Honor", basename));
     case 3:
-        return oname(wpn, msgprintf("%s of Glory", basename));
+        return oname(wpn, msgprintf("%s of Violence", basename));
     case 4:
         return oname(wpn, msgprintf("%s of Revenge", basename));
     case 5:
@@ -168,17 +167,17 @@ oname_random_weapon(struct obj *wpn, enum rng rng)
     case 8:
         return oname(wpn, msgprintf("%s of Carnage", basename));
     case 9:
-        return oname(wpn, msgprintf("%s of Serenity", basename));
+        return oname(wpn, msgprintf("%s of Roses", basename));
     case 10:
         return oname(wpn, msgprintf("%s of Fable", basename));
     case 11:
         return oname(wpn, msgprintf("%s of Legend", basename));
     case 12:
-        return oname(wpn, msgprintf("%s of Integrity", basename));
+        return oname(wpn, msgprintf("%s of Weeping", basename));
     case 13:
         return oname(wpn, msgprintf("%s of Redress", basename));
     case 14:
-        return oname(wpn, msgprintf("Righteous %s", basename));
+        return oname(wpn, msgprintf("Peacemaking %s", basename));
     case 15:
         return oname(wpn, msgprintf("Mighty %s", basename));
     case 16:
@@ -188,19 +187,19 @@ oname_random_weapon(struct obj *wpn, enum rng rng)
     case 18:
         return oname(wpn, msgprintf("%s of Punition", basename));
     case 19:
-        return oname(wpn, msgprintf("%s of Truth", basename));
+        return oname(wpn, msgprintf("%s of Theft", basename));
     case 20:
         return oname(wpn, msgprintf("%s of Omen", basename));
     case 21:
         return oname(wpn, msgprintf("%s of Reckoning", basename));
     case 22:
-        return oname(wpn, msgprintf("%s of Virtue", basename));
+        return oname(wpn, msgprintf("%s of Brutality", basename));
     case 23:
         return oname(wpn, msgprintf("%s of Bloodlust", basename));
     case 24:
-        return oname(wpn, msgprintf("%s of Disaster", basename));
+        return oname(wpn, msgprintf("%s of Catastrophes", basename));
     case 25:
-        return oname(wpn, msgprintf("%s of Torment", basename));
+        return oname(wpn, msgprintf("%s of Bloodletting", basename));
     case 26:
         return oname(wpn, "Due Process");
     case 27:
@@ -215,6 +214,12 @@ oname_random_weapon(struct obj *wpn, enum rng rng)
         return oname(wpn, "Aggressive Negotiation");
     case 32:
         return oname(wpn, "Orphan Maker");
+    case 33:
+        return oname(wpn, "The %s Who Circumnavigated Fairyland", basename);
+    case 34:
+        return oname(wpn, msgprintf("%s of Tomorrow", basename));
+    case 35:
+        return oname(wpn, msgprintf("%s of Song and Dancing", basename));
     default:
         return wpn;
     }
