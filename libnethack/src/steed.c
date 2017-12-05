@@ -7,7 +7,8 @@
 
 /* Monsters that might be ridden */
 static const char steeds[] = {
-    S_QUADRUPED, S_UNICORN, S_ANGEL, S_CENTAUR, S_DRAGON, S_JABBERWOCK, '\0'
+    S_QUADRUPED, S_UNICORN, S_ANGEL, S_CENTAUR, S_DRAGON, S_JABBERWOCK,
+        S_ZRUTY, '\0'
 };
 
 static boolean mount_steed(struct monst *, boolean);

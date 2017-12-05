@@ -1090,9 +1090,10 @@ const struct permonst mons[] = {
         LVL(9, 8, 3, 0, 0), (G_GENO | 2),
         A(ATTK(AT_CLAW, AD_PHYS, 3, 4), ATTK(AT_CLAW, AD_PHYS, 3, 4),
           ATTK(AT_BITE, AD_PHYS, 3, 6), NO_ATTK, NO_ATTK, NO_ATTK),
-        SIZ(1200, 600, 0, MS_SILENT, MZ_LARGE), 0, 0,
-        M1_ANIMAL | M1_HUMANOID | M1_CARNIVORE,
-        M2_HOSTILE | M2_STRONG, M3_INFRAVISIBLE, 0, CLR_BROWN),
+        SIZ(1200, 600, 0, MS_SHRIEK, MZ_LARGE), MR_ELEC, 0,
+        M1_FLY | M1_ANIMAL | M1_NOHANDS | M1_CARNIVORE,
+        M2_WANDER | M2_HOSTILE | M2_STRONG | M2_STUNNED,
+        M3_INFRAVISIBLE, 0, CLR_CYAN),
 /*
  * Angels and other lawful minions
  */
