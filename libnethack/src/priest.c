@@ -542,7 +542,7 @@ priest_talk(struct monst *priest)
             if (!ihas_property(&youmonst, PROTECTION)) {
                 set_property(&youmonst, PROTECTION, 0, TRUE);
                 if (!u.ublessed)
-                    u.ublessed = rn1(3, 2);
+                    u.ublessed = rn1((u.ulevel), 2);
             } else
                 u.ublessed++;
         } else {

@@ -356,6 +356,7 @@ extern void heal_legs(struct monst *, int);
 extern int do_oname(const struct nh_cmd_arg *);
 extern int do_tname(const struct nh_cmd_arg *);
 extern int do_mname(const struct nh_cmd_arg *);
+extern struct obj *oname_random_weapon(struct obj *, enum rng);
 extern struct obj *oname(struct obj *, const char *);
 extern int do_naming(const struct nh_cmd_arg *);
 extern void docall(struct obj *);
