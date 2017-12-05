@@ -150,7 +150,7 @@ oname_random_weapon(struct obj *wpn, enum rng rng)
     /* Don't randomly name stacks. */
     if (wpn->quan > 1)
         return wpn;
-    switch(rn2_on_rng(38, rng)) {
+    switch(rn2_on_rng(36, rng)) {
     case 1:
         return oname(wpn, msgprintf("%s of Justice", basename));
     case 2:
@@ -215,7 +215,8 @@ oname_random_weapon(struct obj *wpn, enum rng rng)
     case 32:
         return oname(wpn, "Orphan Maker");
     case 33:
-        return oname(wpn, "The %s Who Circumnavigated Fairyland", basename);
+        return oname(wpn, msgprintf("The %s Who Circumnavigated Fairyland",
+                     basename));
     case 34:
         return oname(wpn, msgprintf("%s of Tomorrow", basename));
     case 35:
